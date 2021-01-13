@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/replay-analysis-tool/static/css/main.d511d2b7.chunk.css",
-    "main.js": "/replay-analysis-tool/static/js/main.2b22c6a1.chunk.js",
-    "main.js.map": "/replay-analysis-tool/static/js/main.2b22c6a1.chunk.js.map",
+    "main.js": "/replay-analysis-tool/static/js/main.b8b96627.chunk.js",
+    "main.js.map": "/replay-analysis-tool/static/js/main.b8b96627.chunk.js.map",
     "runtime-main.js": "/replay-analysis-tool/static/js/runtime-main.137a6292.js",
     "runtime-main.js.map": "/replay-analysis-tool/static/js/runtime-main.137a6292.js.map",
     "static/css/2.ae9f1eb3.chunk.css": "/replay-analysis-tool/static/css/2.ae9f1eb3.chunk.css",
@@ -28,6 +28,6 @@
     "static/css/2.ae9f1eb3.chunk.css",
     "static/js/2.d273d5bc.chunk.js",
     "static/css/main.d511d2b7.chunk.css",
-    "static/js/main.2b22c6a1.chunk.js"
+    "static/js/main.b8b96627.chunk.js"
   ]
 }
