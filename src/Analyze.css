@@ -1,0 +1,8 @@
+.Rank-dropdown > button{
+    width: 250px !important;
+    color: black !important;
+    background-color: white !important;
+    border: 1px solid black !important;
+    transition: 0.3s !important;
+    font-weight: 600 !important;
+}
