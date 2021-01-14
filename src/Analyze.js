@@ -58,11 +58,9 @@ class Analyze extends React.Component {
             <div>
                 <hr />
                 <h1 className="title"> Enter your replay ID: </h1>
-                
                  <Form.Group className="Replay-form">
                     <Form.Control type="textarea" placeholder="Replay ID" onChange={this.handleChange}/>
                  </Form.Group>
-    
                 <div />
                 <Button className="Menu-button" onClick={this.fetchReplayData} > Analyze </Button> 
                 <hr />
