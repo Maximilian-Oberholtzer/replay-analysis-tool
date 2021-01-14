@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/replay-analysis-tool/static/css/main.a8aea383.chunk.css",
-    "main.js": "/replay-analysis-tool/static/js/main.8698a555.chunk.js",
-    "main.js.map": "/replay-analysis-tool/static/js/main.8698a555.chunk.js.map",
-    "runtime-main.js": "/replay-analysis-tool/static/js/runtime-main.524a904a.js",
-    "runtime-main.js.map": "/replay-analysis-tool/static/js/runtime-main.524a904a.js.map",
+    "main.css": "/replay-analysis-tool/static/css/main.ec85ee4a.chunk.css",
+    "main.js": "/replay-analysis-tool/static/js/main.46f84251.chunk.js",
+    "main.js.map": "/replay-analysis-tool/static/js/main.46f84251.chunk.js.map",
+    "runtime-main.js": "/replay-analysis-tool/static/js/runtime-main.f5a77c2e.js",
+    "runtime-main.js.map": "/replay-analysis-tool/static/js/runtime-main.f5a77c2e.js.map",
     "static/css/2.ae9f1eb3.chunk.css": "/replay-analysis-tool/static/css/2.ae9f1eb3.chunk.css",
-    "static/js/2.9c9a630b.chunk.js": "/replay-analysis-tool/static/js/2.9c9a630b.chunk.js",
-    "static/js/2.9c9a630b.chunk.js.map": "/replay-analysis-tool/static/js/2.9c9a630b.chunk.js.map",
-    "static/js/3.02f1e967.chunk.js": "/replay-analysis-tool/static/js/3.02f1e967.chunk.js",
-    "static/js/3.02f1e967.chunk.js.map": "/replay-analysis-tool/static/js/3.02f1e967.chunk.js.map",
+    "static/js/2.03c4b3f0.chunk.js": "/replay-analysis-tool/static/js/2.03c4b3f0.chunk.js",
+    "static/js/2.03c4b3f0.chunk.js.map": "/replay-analysis-tool/static/js/2.03c4b3f0.chunk.js.map",
+    "static/js/3.4f28cc7f.chunk.js": "/replay-analysis-tool/static/js/3.4f28cc7f.chunk.js",
+    "static/js/3.4f28cc7f.chunk.js.map": "/replay-analysis-tool/static/js/3.4f28cc7f.chunk.js.map",
     "index.html": "/replay-analysis-tool/index.html",
     "static/css/2.ae9f1eb3.chunk.css.map": "/replay-analysis-tool/static/css/2.ae9f1eb3.chunk.css.map",
-    "static/css/main.a8aea383.chunk.css.map": "/replay-analysis-tool/static/css/main.a8aea383.chunk.css.map",
-    "static/js/2.9c9a630b.chunk.js.LICENSE.txt": "/replay-analysis-tool/static/js/2.9c9a630b.chunk.js.LICENSE.txt",
+    "static/css/main.ec85ee4a.chunk.css.map": "/replay-analysis-tool/static/css/main.ec85ee4a.chunk.css.map",
+    "static/js/2.03c4b3f0.chunk.js.LICENSE.txt": "/replay-analysis-tool/static/js/2.03c4b3f0.chunk.js.LICENSE.txt",
     "static/media/discord-icon.0c4e6f78.svg": "/replay-analysis-tool/static/media/discord-icon.0c4e6f78.svg",
     "static/media/feed-icon.5154b6d1.jpg": "/replay-analysis-tool/static/media/feed-icon.5154b6d1.jpg",
     "static/media/rl-image-1.77e19ab4.jpg": "/replay-analysis-tool/static/media/rl-image-1.77e19ab4.jpg",
@@ -24,10 +24,10 @@
     "static/media/twitch-icon.ead2a3ae.svg": "/replay-analysis-tool/static/media/twitch-icon.ead2a3ae.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.524a904a.js",
+    "static/js/runtime-main.f5a77c2e.js",
     "static/css/2.ae9f1eb3.chunk.css",
-    "static/js/2.9c9a630b.chunk.js",
-    "static/css/main.a8aea383.chunk.css",
-    "static/js/main.8698a555.chunk.js"
+    "static/js/2.03c4b3f0.chunk.js",
+    "static/css/main.ec85ee4a.chunk.css",
+    "static/js/main.46f84251.chunk.js"
   ]
 }
