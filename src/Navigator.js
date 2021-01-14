@@ -14,7 +14,7 @@ function Navigator() {
 
    return(
       <Navbar sticky="top" className="Nav-bar">
-         <Navbar.Brand href="/">
+         <Navbar.Brand href={process.env.PUBLIC_URL + '/'}>
             <Image className="Home-link" src={feed}/>
          </Navbar.Brand>
          <Navbar.Text className="Home-title">

@@ -17,9 +17,9 @@ function App() {
       <div className="App-page"> 
         <Navigator />
           <Switch>
-            <Route path="/" exact component={HomePage} /> 
-            <Route path="/about" component={About} />
-            <Route path="/analyze" component={Analyze} />
+            <Route path={process.env.PUBLIC_URL + '/'} exact component={HomePage} /> 
+            <Route path={process.env.PUBLIC_URL + '/about'} component={About} />
+            <Route path={process.env.PUBLIC_URL + '/analyze'} component={Analyze} />
           </Switch>
       </div> 
     </Router> 
@@ -38,7 +38,7 @@ const HomePage = () => (
           <Card.Text>
             Start capturing statistics while watching a solo duel replay.
           </Card.Text>
-            <Link className="Home-link-style" to="/analyze">
+            <Link className="Home-link-style" to={process.env.PUBLIC_URL + '/analyze'}>
               <Button className="Menu-button"> Begin </Button>
             </Link>
         </Card.Body>
@@ -48,7 +48,7 @@ const HomePage = () => (
         <Card.Body>
           <Card.Title>Welcome!</Card.Title>
           <Card.Text>
-          Here you will be able to analyze your solo duel replays and get useful feedback that can
+          Here you will be able to analyze your solo duel replays and generate a report with useful feedback that can
           help you improve your Rocket League skills.
           </Card.Text>
         </Card.Body>
@@ -60,7 +60,7 @@ const HomePage = () => (
           <Card.Text>
             Learn about the creator of this tool and how it works.
           </Card.Text>
-          <Link className="Home-link-style" to="/about">
+          <Link className="Home-link-style" to={process.env.PUBLIC_URL + '/about'}>
             <Button className="Menu-button"> About </Button>
           </Link>
         </Card.Body>
@@ -69,29 +69,5 @@ const HomePage = () => (
     <hr />
   </div>  
 );
-
-/*
-<div className="overview">
-      <div>
-        Welcome to Feed's replay analysis tool! Here you will be able to 
-        analyze your solo duel replays and get useful feedback that can
-        help you improve your Rocket League skills.
-      </div>
-    </div>
-    <div className="selection">
-      <nav>
-        <Link className="Home-link-style" to="/analyze">
-          <Button className="Menu-button"> Start </Button>
-        </Link>
-      </nav>
-    </div>
-    <div className="selection">
-      <nav>
-        <Link className="Home-link-style" to="/about">
-          <Button className="Menu-button"> About </Button>
-        </Link>
-      </nav>
-    </div>
-*/
 
 export default App;

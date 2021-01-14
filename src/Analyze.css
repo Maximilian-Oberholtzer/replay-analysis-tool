@@ -1,8 +1,12 @@
-.Rank-dropdown > button{
-    width: 250px !important;
-    color: black !important;
-    background-color: white !important;
-    border: 1px solid black !important;
-    transition: 0.3s !important;
-    font-weight: 600 !important;
+.Replay-form{
+    margin-top: 20px;
+    margin-bottom: 30px;
+    display: inline-block;
+    width: 350px;
+    border: 1px solid black;
+    border-radius: 2px !important;
+}
+
+.Replay-form > input{
+    border: none;
 }
