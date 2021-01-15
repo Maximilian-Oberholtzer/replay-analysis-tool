@@ -1,13 +1,13 @@
 import './App.css';
-import Navigator from './Navigator';
-import About from './About';
-import Analyze from './Analyze';
-import Footer from './Footer';
+import Navigator from './main-components/Navigator';
+import Footer from './main-components/Footer';
+import About from './main-components/About';
+import Analyze from './data-components/Analyze';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import rlImage1 from './rl-image-1.jpg';
-import rlImage2 from './rl-image-2.jpg';
-import rlImage3 from './rl-image-3.jpg';
+import rlImage1 from './resources/rl-image-1.jpg';
+import rlImage2 from './resources/rl-image-2.jpg';
+import rlImage3 from './resources/rl-image-3.jpg';
 
 import { Button, CardDeck, Card } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
