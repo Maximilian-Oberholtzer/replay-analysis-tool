@@ -1,0 +1,17 @@
+.Footer{
+  z-index: 1000;
+  background-color:rgb(10, 10, 10);
+  position: absolute;
+  height: 36px !important;
+}
+
+.Footer-container{
+    width: auto !important;
+
+}
+
+.Footer-text{
+    color:white !important; 
+    font-weight: 100;
+    font-size: 12px;
+}

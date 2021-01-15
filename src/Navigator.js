@@ -7,7 +7,7 @@ import feed from './feed-icon.jpg';
 import steam from './steam-icon.svg';
 import tiktok from './tiktok-icon.svg';
 
-import {Navbar, Container, Row, Col, Image} from 'react-bootstrap'
+import {Navbar, Image} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Navigator() {

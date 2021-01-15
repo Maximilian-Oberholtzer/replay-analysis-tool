@@ -2,6 +2,7 @@ import './App.css';
 import Navigator from './Navigator';
 import About from './About';
 import Analyze from './Analyze';
+import Footer from './Footer';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import rlImage1 from './rl-image-1.jpg';
@@ -21,13 +22,14 @@ function App() {
             <Route path={process.env.PUBLIC_URL + '/about'} component={About} />
             <Route path={process.env.PUBLIC_URL + '/analyze'} component={Analyze} />
           </Switch>
+          <Footer />
       </div> 
     </Router> 
   );
 }
 
 const HomePage = () => (
-  <div className="App-page">
+  <div>
     <hr />
     <h1 className="title">Home</h1>
     <CardDeck className="Card-deck">
@@ -36,7 +38,7 @@ const HomePage = () => (
         <Card.Body>
           <Card.Title>Get Started</Card.Title>
           <Card.Text>
-            Start capturing statistics while watching a solo duel replay.
+            Send in a solo duel replay to be analyzed.
           </Card.Text>
             <Link className="Home-link-style" to={process.env.PUBLIC_URL + '/analyze'}>
               <Button className="Menu-button"> Begin </Button>
@@ -66,7 +68,6 @@ const HomePage = () => (
         </Card.Body>
       </Card>
     </CardDeck>
-    <hr />
   </div>  
 );
 

@@ -1,8 +1,7 @@
 import React, {Component, useContext, useState} from 'react';
 import './App.css';
 import './Analyze.css';
-import Select from 'react-select';
-import { Dropdown, DropdownButton, Form, Button } from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
 import axios from "axios";
 
 const token = 'YYnAMB7jvHL6t5DnY7VkWrj7wuriCnff5UBTbUeK';
@@ -11,9 +10,9 @@ const token = 'YYnAMB7jvHL6t5DnY7VkWrj7wuriCnff5UBTbUeK';
 
 class Analyze extends React.Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
-        this.state = {key : '', message : ''};
+        this.state = {key : '', message : '', replayData: null};
     }
 
     handleChange = (event) => {
@@ -24,7 +23,7 @@ class Analyze extends React.Component {
         const url = "https://ballchasing.com/api/replays/";
         const key = this.state.key;
 
-        if(key != ''){
+        if(key !== '') {
             axios.get(url + key, {
                 headers: {
                     Authorization: `${token}`
@@ -32,8 +31,7 @@ class Analyze extends React.Component {
             })
             .then(function (response) {
                 // handle success
-                 console.log(response);
-                 this.setState({message: "Data fetch successful."});
+                 this.setState({message: "Data fetch successful.", replayData: response.data});
             }.bind(this))
             .catch(function (error) {
                 // handle error
@@ -44,14 +42,11 @@ class Analyze extends React.Component {
                  // always executed
              });
         }
-        else{
+        else {
             //make sure user puts in a value
             this.setState({message: "Replay ID field cannot be empty."});
         }
-
     }
-
-    //onClick={this.getReplayData}
 
     render(){
         return(
@@ -65,10 +60,22 @@ class Analyze extends React.Component {
                 <Button className="Menu-button" onClick={this.fetchReplayData} > Analyze </Button> 
                 <hr />
                 <h1 className="title"> {this.state.message} </h1>
+                <GetReplayTitle data={this.state.replayData} />
             </div>
         );
-    }
-    
+    } 
 }
+
+    //sample component that returns submitted replay title
+    function GetReplayTitle(data){
+        if(data.data != null) {
+            console.log(data);
+            const title = data.data.title.toString();
+            return <h1 className="title"> Replay title: {title} </h1>;
+        }
+        else {
+            return(null);
+        }  
+    }
 
 export default Analyze;
