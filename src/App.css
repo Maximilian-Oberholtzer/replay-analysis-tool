@@ -14,13 +14,22 @@
   font-weight: bold;
 }
 
-hr{
+.Header-hr{
   border: none;
   height: 1px !important;
   width: 25px;
   background-color:rgb(10, 10, 10);;
   margin-bottom: 3rem !important;
-  margin-top: 3rem !important;
+  margin-top: 4rem !important;
+}
+
+.Footer-hr{
+  border: none;
+  height: 1px !important;
+  width: 25px;
+  background-color:rgb(10, 10, 10);;
+  margin-bottom: 5.5rem !important;
+  margin-top: 5rem !important;
 }
 
 .Card-deck{

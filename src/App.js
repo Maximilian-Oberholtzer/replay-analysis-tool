@@ -30,7 +30,7 @@ function App() {
 
 const HomePage = () => (
   <div>
-    <hr />
+    <hr className="Header-hr"/>
     <h1 className="title">Home</h1>
     <CardDeck className="Card-deck">
       <Card className="Card">
@@ -68,6 +68,7 @@ const HomePage = () => (
         </Card.Body>
       </Card>
     </CardDeck>
+    <hr className="Footer-hr"/>
   </div>  
 );
 

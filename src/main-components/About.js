@@ -4,7 +4,7 @@ import '../App.css';
 function About() {
     return(
         <div>
-            <hr />
+            <hr className="Header-hr"/>
             <h1 className="title">About</h1>
         </div>
     );
