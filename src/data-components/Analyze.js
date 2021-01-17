@@ -1,12 +1,14 @@
 import React from 'react';
 import '../App.css';
 import './Analyze.css';
+import Ranks from './Ranks'
 import { Form, Button } from 'react-bootstrap';
 import axios from "axios";
 
 const token = 'YYnAMB7jvHL6t5DnY7VkWrj7wuriCnff5UBTbUeK';
 
-//example replay input:  f471cb81-74d5-4376-becb-368d996b5b5f
+//example replay input:  f471cb81-74d5-4376-becb-368d996b5b5f  Feed vs DraLi
+//                       9d03f4bd-a853-4bda-867c-3f57c04904e6  AyyJayy vs Spider
 
 class Analyze extends React.Component {
 
@@ -61,7 +63,7 @@ class Analyze extends React.Component {
                 <hr className="Header-hr"/>
                 <h1 className="title"> {this.state.message} </h1>
                 <GetReplayTitle data={this.state.replayData} />
-                <GetRanks data={this.state.replayData} />
+                <Ranks data={this.state.replayData} />
             </div>
         );
     } 
@@ -77,59 +79,6 @@ class Analyze extends React.Component {
         else {
             return(null);
         }  
-    }
-
-    function GetRanks(data){
-
-        const url = "https://api.yannismate.de/rank/steam/"
-        
-        console.log(data);
-        if(data.data != null) {
-            const playerBlueName = data.data.blue.players[0].name;
-            const playerOrangeName = data.data.orange.players[0].name;
-            const playerBlueId = data.data.blue.players[0].id.id;
-            const playerOrangeId = data.data.orange.players[0].id.id;
-
-            var playerBlueRank;
-            var playerOrangeRank;
-
-            const rankOffset1 = "(";
-            const rankOffset2 = ")";
-            var rankIndex1;
-            var rankIndex2;
-
-            var playerBlueRankString;
-
-            //fetech rank through ID
-            axios.get(url + playerBlueId, {
-                
-            })
-            .then(function (response) {
-                // handle success
-                console.log("Successfully got player blue's rank data!")
-                console.log(response);
-                playerBlueRankString = response.data;
-                console.log(playerBlueRankString);
-                rankIndex1 = playerBlueRankString.indexOf(rankOffset1);
-                rankIndex2 = playerBlueRankString.indexOf(rankOffset2);
-                playerBlueRank = playerBlueRankString.substring(rankIndex1 + 1, rankIndex2);
-                console.log(playerBlueRank);
-                // console.log(rankIndex1);
-                // console.log(rankIndex2);
-
-                
-            }.bind(this))
-            .catch(function (error) {
-                // handle error
-                console.log(error);
-             }.bind(this))
-              .then(function () {
-                 // always executed
-             });
-
-        }      
-
-        return(null);
     }
 
 export default Analyze;
