@@ -15,7 +15,7 @@ function Ranks(data){
     var playerBlueName;
     var playerOrangeName;
     
-    //console.log(data);
+    console.log(data);
     if(data.data != null) {
         playerBlueName = data.data.blue.players[0].name;
         const playerBlueId = data.data.blue.players[0].id.id;
