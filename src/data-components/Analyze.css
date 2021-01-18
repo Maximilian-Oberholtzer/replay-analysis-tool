@@ -1,8 +1,28 @@
+.Card-deck-analyze-page{
+    margin-top: 50px !important;
+    margin-left: 20% !important;
+    margin-right: 20% !important;
+  }
+  
+  @media (min-width: 576px){
+    .Card-deck-analyze-page {
+      display: block !important;
+      flex-flow: unset !important;
+    }
+  }
+  
+  @media (min-width: 1000px){
+    .Card-deck-analyze-page {
+      display: flex !important;
+      flex-flow: row wrap !important;
+      }
+    }
+
 .Replay-form{
     margin-top: 20px;
     margin-bottom: 35px;
     display: inline-block;
-    width: 70%;
+    width: 80%;
     height: 38px !important;
     border: none;
 }
@@ -10,6 +30,18 @@
 .Replay-form > input{
     border: 1px solid black;
     border-radius: 2px !important;
+}
+
+.Card-analyze-page{
+    border: 1px solid rgb(170, 170, 170) !important;
+    border-radius: 4px;
+    margin-bottom: 30px !important;
+  }
+
+.card-footer{
+    border: none !important;
+    background-color: white !important;
+    height: 68px !important;
 }
 
 .Browse-file-button{
@@ -37,7 +69,7 @@ input[type="file"] {
     cursor: pointer;
     color: rgb(100, 100, 100);
     font-weight: 100;
-    width: 70% !important;
+    width: 80% !important;
     height: 38px !important;
     font-family: sans-serif;
     text-align: left;

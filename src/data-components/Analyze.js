@@ -17,7 +17,7 @@ class Analyze extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {key : '', message : '', replayData: null, fileName: 'Browse...', file: null};
+        this.state = {key: '', analyzeMessage: '', uploadMessage: '', replayData: null, fileName: 'Browse...', file: null};
     }
 
     handleChange = (event) => {
@@ -29,6 +29,9 @@ class Analyze extends React.Component {
         if(event.target.files[0] !== undefined){
             let file = event.target.files[0];
             this.setState({file: file, fileName: event.target.files[0].name});
+        }
+        else{
+            this.setState({fileName: 'Browse...'});
         }
         
     }
@@ -51,12 +54,16 @@ class Analyze extends React.Component {
                 data: formdata
             }).then((response) => {
                 console.log(response);
+                const id = response.data.id;
+                this.setState({uploadMessage: "Success! Replay ID: " + id});
             }, (error) => {
                 console.log(error);
+                this.setState({uploadMessage: "File not valid or already uploaded."});
             });
         }
         else{
             console.log("file cannot be null");
+            this.setState({uploadMessage: "Please select a file before uploading."});
         }
 
     }
@@ -74,12 +81,18 @@ class Analyze extends React.Component {
             })
             .then(function (response) {
                 // handle success
-                 this.setState({message: "Data fetch successful.", replayData: response.data});
+                // make sure the replay is solo duel
+                if(response.data.team_size === 1){
+                    this.setState({analyzeMessage: "Data fetch successful.", replayData: response.data});
+                }
+                else{
+                    this.setState({analyzeMessage: "Please enter a solo duel replay."});
+                }    
             }.bind(this))
             .catch(function (error) {
                 // handle error
                 console.log(error);
-                this.setState({message: "Please enter a valid replay ID."});
+                this.setState({analyzeMessage: "Please enter a valid replay ID."});
              }.bind(this))
               .then(function () {
                  // always executed
@@ -87,7 +100,7 @@ class Analyze extends React.Component {
         }
         else {
             //make sure user puts in a value
-            this.setState({message: "Replay ID field cannot be empty."});
+            this.setState({analyzeMessage: "Replay ID field cannot be empty."});
         }
     }
 
@@ -95,8 +108,8 @@ class Analyze extends React.Component {
         return(
             <div>
                 <hr className="Header-hr"/>
-                <CardDeck className="Card-deck">
-                    <Card className="Card">
+                <CardDeck className="Card-deck-analyze-page">
+                    <Card className="Card-analyze-page">
                         <Card.Body>
                         <Card.Title>Enter your replay ID</Card.Title>
                             <Form.Group className="Replay-form">
@@ -105,8 +118,11 @@ class Analyze extends React.Component {
                             <div />
                             <Button className="Menu-button" onClick={this.fetchReplayData} > Analyze </Button> 
                         </Card.Body>
+                        <Card.Footer>
+                            <small className="text-muted">{this.state.analyzeMessage}</small>
+                        </Card.Footer>
                     </Card>
-                    <Card className="Card">
+                    <Card className="Card-analyze-page">
                         <Card.Body>
                         <Card.Title>Upload a Replay</Card.Title>
                             <div className="File-upload">
@@ -118,10 +134,12 @@ class Analyze extends React.Component {
                             <div />
                             <Button className="Menu-button" onClick={this.uploadFile}> Upload </Button>
                         </Card.Body>
+                        <Card.Footer>
+                            <small className="text-muted">{this.state.uploadMessage}</small>
+                        </Card.Footer>
                     </Card>
                 </CardDeck>
                 <hr className="Footer-hr"/>
-                <h1 className="title"> {this.state.message} </h1>
                 <GetReplayTitle data={this.state.replayData} />
                 <Ranks data={this.state.replayData} />
             </div>
