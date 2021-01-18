@@ -77,6 +77,7 @@ function Ranks(data){
             <div>
                 <h1 className="title"> {playerBlueName}'s Rank: {playerBlueRank} </h1>
                 <h1 className="title"> {playerOrangeName}'s Rank: {playerOrangeRank} </h1>
+                <hr className="Footer-hr"/>
             </div>
         ); 
     }
