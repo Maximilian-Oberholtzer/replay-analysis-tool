@@ -13,6 +13,8 @@ const token = 'YYnAMB7jvHL6t5DnY7VkWrj7wuriCnff5UBTbUeK';
 //example replay input:  f471cb81-74d5-4376-becb-368d996b5b5f  Feed vs DraLi
 //                       9d03f4bd-a853-4bda-867c-3f57c04904e6  AyyJayy vs Spider
 
+//proxy site:  https://cors-anywhere.herokuapp.com/
+
 class Analyze extends React.Component {
 
     constructor(props) {
@@ -38,7 +40,7 @@ class Analyze extends React.Component {
 
     //Post a replay to Ballchasing.com
     uploadFile = () => {
-        const url = "https://cors-anywhere.herokuapp.com/https://ballchasing.com/api/v2/upload?visibility=public";
+        const url = "https://ballchasing.com/api/v2/upload?visibility=public";
         let file = this.state.file;
         let formdata = new FormData();
 
@@ -70,7 +72,7 @@ class Analyze extends React.Component {
 
     //Get replay data from Ballchasing.com
     fetchReplayData = () => { 
-        const url = "https://cors-anywhere.herokuapp.com/https://ballchasing.com/api/replays/";
+        const url = "https://ballchasing.com/api/replays/";
         const key = this.state.key;
 
         if(key !== '') {
