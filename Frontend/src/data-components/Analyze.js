@@ -93,6 +93,7 @@ class Analyze extends React.Component {
         }
     }
 
+    //Render the Analyze page Output
     render(){
         return(
             <div>
@@ -130,13 +131,11 @@ class Analyze extends React.Component {
                 </CardDeck>
                 <hr className="Footer-hr"/>
                 <GetReplayTitle data={this.state.replayData} />
-                
+                <Ranks data={this.state.replayData} />
             </div>
         );
     } 
 }
-
-//<Ranks data={this.state.replayData} />
 
     function GetReplayTitle(data){
         if(data.data != null){

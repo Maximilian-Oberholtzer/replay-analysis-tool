@@ -19,6 +19,7 @@ if(process.env.NODE_ENV === 'production'){
 
 // Put all API endpoints under '/api'
 
+//Get Replay Data API
 app.get('/api/getreplay/:replayid', (req, res) => {
   const replayID = req.params.replayid;
   const url = "https://ballchasing.com/api/replays/" + replayID;
@@ -34,13 +35,18 @@ app.get('/api/getreplay/:replayid', (req, res) => {
   );
 });
 
-
-// function(error, reponse, body) {
-//   if(!error && response.statusCode == 200) {
-//     //var parsedBody = JSON.parse(body);
-//     res.send(body);
-//   }
-// }
+//Get Ranks Data API
+app.get('/api/getranks/:playerid', (req, res) => {
+  const playerID = req.params.playerid;
+  const url = "https://api.yannismate.de/rank/steam/" + playerID;
+  request(
+    url, {
+      method: "GET"
+    }, function(error, response, body) {
+        res.send(body)
+      }
+  );
+});
 
 app.get('*', (request, response) => {
   response.sendFile(path.join(__dirname, 'Frontend/build', 'index.html'));

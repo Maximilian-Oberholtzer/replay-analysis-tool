@@ -4,8 +4,6 @@ import axios from "axios";
 
 function Ranks(data){
 
-    const url = "https://api.yannismate.de/rank/steam/";
-
     const [playerBlueRank, setBlueValue] = useState(null);
     const [playerOrangeRank, setOrangeValue] = useState(null);
 
@@ -14,66 +12,33 @@ function Ranks(data){
 
     var playerBlueName;
     var playerOrangeName;
-    
-    console.log(data);
-    if(data.data != null && data != null) {
-        console.log(data);
-        playerBlueName = data.data.blue.players[0].name;
-        const playerBlueId = data.data.blue.players[0].id.id;
 
-        //fetech rank through ID
-        axios.get(url + playerBlueId, {
-            
-        })
-        .then(function (response) {
-            // handle success
-            //get player blue's rank
+    if(data.data != null){
+        playerBlueName = data.data.data.blue.players[0].name;
+        playerOrangeName = data.data.data.orange.players[0].name;
+        const playerBlueId = data.data.data.blue.players[0].id.id;    
+        const playerOrangeId = data.data.data.orange.players[0].id.id;
+
+        //get blue player's rank
+        axios.get("/api/getranks/" + playerBlueId).then(response => {
+            console.log(response);
             const playerBlueRankString = response.data;
             const rankIndex1 = playerBlueRankString.indexOf(rankOffset1);
             const rankIndex2 = playerBlueRankString.indexOf(rankOffset2);
             const playerBlueValue = playerBlueRankString.substring(rankIndex1 + 1, rankIndex2);
             setBlueValue(playerBlueValue);
-            
         })
-        .catch(function (error) {
-            // handle error
-            console.log(error);
-         })
-          .then(function () {
-             // always executed
-         });
 
-    }
-    
-    if(data.data != null) {
-        playerOrangeName = data.data.orange.players[0].name;
-        const playerOrangeId = data.data.orange.players[0].id.id;
-
-        //fetech rank through ID
-        axios.get(url + playerOrangeId, {
-            
-        })
-        .then(function (response) {
-            // handle success
-             //get player orange's rank
+        //get orange player's rank
+        axios.get("/api/getranks/" + playerOrangeId).then(response => {
             const playerOrangeRankString = response.data;
             const rankIndex1 = playerOrangeRankString.indexOf(rankOffset1);
             const rankIndex2 = playerOrangeRankString.indexOf(rankOffset2);
             const playerOrangeValue = playerOrangeRankString.substring(rankIndex1 + 1, rankIndex2);
             setOrangeValue(playerOrangeValue);
-            
+
         })
-        .catch(function (error) {
-            // handle error
-            console.log(error);
-         })
-          .then(function () {
-             // always executed
-         });
 
-    }
-
-    if(data.data != null) {
         return(
             <div>
                 <h1 className="title"> {playerBlueName}'s Rank: {playerBlueRank} </h1>
@@ -81,10 +46,12 @@ function Ranks(data){
                 <hr className="Footer-hr"/>
             </div>
         ); 
+
     }
     else{
         return(null);
     }
+
 }
 
 export default Ranks;
