@@ -21,7 +21,6 @@ function Ranks(data){
 
         //get blue player's rank
         axios.get("/api/getranks/" + playerBlueId).then(response => {
-            console.log(response);
             const playerBlueRankString = response.data;
             const rankIndex1 = playerBlueRankString.indexOf(rankOffset1);
             const rankIndex2 = playerBlueRankString.indexOf(rankOffset2);

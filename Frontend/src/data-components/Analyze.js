@@ -93,7 +93,7 @@ class Analyze extends React.Component {
         }
     }
 
-    //Render the Analyze page Output
+    //Render the Analyze page
     render(){
         return(
             <div>
