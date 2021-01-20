@@ -40,7 +40,7 @@ class Analyze extends React.Component {
 
     //Post a replay to Ballchasing.com
     uploadFile = () => {
-        const url = "/v2/upload?visibility=public";
+        const url = "https://cors-anywhere.herokuapp.com/https://ballchasing.com/api/v2/upload?visibility=public";
         let file = this.state.file;
         let formdata = new FormData();
 
@@ -72,7 +72,7 @@ class Analyze extends React.Component {
 
     //Get replay data from Ballchasing.com
     fetchReplayData = () => { 
-        const url = "/replays/";
+        const url = "https://cors-anywhere.herokuapp.com/https://ballchasing.com/api/replays/";
         const key = this.state.key;
 
         if(key !== '') {

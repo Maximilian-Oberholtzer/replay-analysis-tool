@@ -4,7 +4,7 @@ import axios from "axios";
 
 function Ranks(data){
 
-    const url = "https://api.yannismate.de/rank/steam/";
+    const url = "https://cors-anywhere.herokuapp.com/https://api.yannismate.de/rank/steam/";
 
     const [playerBlueRank, setBlueValue] = useState(null);
     const [playerOrangeRank, setOrangeValue] = useState(null);
