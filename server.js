@@ -12,8 +12,8 @@ if(process.env.NODE_ENV === 'production'){
 }
 
 // Put all API endpoints under '/api'
-app.get('/', (req, res) => {
-    res.send('Hello World!')
+app.get('/test', (request, response) => {
+    response.send('Hello World!');
   })
 
 app.get('*', (request, response) => {
@@ -23,4 +23,4 @@ app.get('*', (request, response) => {
 const port = process.env.PORT || 5000;
 app.listen(port);
 
-console.log(`Password generator listening on ${port}`);
+console.log(`Replay analysis tool listening on port: ${port}`);

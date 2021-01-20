@@ -19,7 +19,15 @@ class Analyze extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {key: '', analyzeMessage: '', uploadMessage: '', replayData: null, fileName: 'Browse...', file: null};
+        this.state = {key: '', analyzeMessage: '', uploadMessage: '', replayData: null, fileName: 'Browse...', file: null, test: "Hello"};
+    }
+
+    //testing backend api call
+    componentDidMount = () => {
+        axios.get('/test').then(function(response) {
+            this.setState({test: response.data});
+            console.log(response.data);
+        }.bind(this));
     }
 
     handleChange = (event) => {
@@ -109,6 +117,7 @@ class Analyze extends React.Component {
     render(){
         return(
             <div>
+                <h1 className="title"> {this.state.test} </h1>
                 <hr className="Header-hr"/>
                 <CardDeck className="Card-deck-analyze-page">
                     <Card className="Card-analyze-page">
