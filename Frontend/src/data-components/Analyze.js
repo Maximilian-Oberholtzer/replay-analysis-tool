@@ -19,15 +19,7 @@ class Analyze extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {key: '', analyzeMessage: '', uploadMessage: '', replayData: null, fileName: 'Browse...', file: null, test: "Hello"};
-    }
-
-    //testing backend api call
-    componentDidMount = () => {
-        axios.get('/test').then(function(response) {
-            this.setState({test: response.data});
-            console.log(response.data);
-        }.bind(this));
+        this.state = {key: '', analyzeMessage: '', uploadMessage: '', replayData: null, fileName: 'Browse...', file: null};
     }
 
     handleChange = (event) => {
@@ -78,38 +70,25 @@ class Analyze extends React.Component {
 
     }
 
-    //Get replay data from Ballchasing.com
-    fetchReplayData = () => { 
-        const url = "https://ballchasing.com/api/replays/";
-        const key = this.state.key;
-
-        if(key !== '') {
-            axios.get(url + key, {
-                headers: {
-                    Authorization: `${token}`
-                }
-            })
-            .then(function (response) {
-                // handle success
-                // make sure the replay is solo duel
-                if(response.data.team_size === 1){
-                    this.setState({analyzeMessage: "Data fetch successful.", replayData: response.data});
+    //Get replay data from bakend api call
+    fetchReplayData = () => {
+        if(this.state.key !== ''){
+            axios.get("/api/getreplay/" + this.state.key).then(response => {
+                if(response.data.hasOwnProperty('error')){
+                    this.setState({analyzeMessage: "Please enter a valid replay ID."});
                 }
                 else{
-                    this.setState({analyzeMessage: "Please enter a solo duel replay."});
-                }    
-            }.bind(this))
-            .catch(function (error) {
-                // handle error
-                console.log(error);
-                this.setState({analyzeMessage: "Please enter a valid replay ID."});
-             }.bind(this))
-              .then(function () {
-                 // always executed
-             });
+                    if(response.data.team_size !== 1){
+                        this.setState({analyzeMessage: "Please enter a solo duel replay."})
+                    }
+                    else{
+                        this.setState({analyzeMessage: "Data fetch successful."});
+                        this.setState({replayData: response});
+                    }
+                }
+            })
         }
-        else {
-            //make sure user puts in a value
+        else{
             this.setState({analyzeMessage: "Replay ID field cannot be empty."});
         }
     }
@@ -117,7 +96,6 @@ class Analyze extends React.Component {
     render(){
         return(
             <div>
-                <h1 className="title"> {this.state.test} </h1>
                 <hr className="Header-hr"/>
                 <CardDeck className="Card-deck-analyze-page">
                     <Card className="Card-analyze-page">
@@ -152,22 +130,22 @@ class Analyze extends React.Component {
                 </CardDeck>
                 <hr className="Footer-hr"/>
                 <GetReplayTitle data={this.state.replayData} />
-                <Ranks data={this.state.replayData} />
+                
             </div>
         );
     } 
 }
 
-    //sample component that returns submitted replay title
+//<Ranks data={this.state.replayData} />
+
     function GetReplayTitle(data){
-        if(data.data != null) {
-            //console.log(data);
-            const title = data.data.title.toString();
+        if(data.data != null){
+            const title = data.data.data.title.toString();
             return <h1 className="title"> Replay title: {title} </h1>;
         }
-        else {
+        else{
             return(null);
-        }  
+        }      
     }
 
 export default Analyze;
