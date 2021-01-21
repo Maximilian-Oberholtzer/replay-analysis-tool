@@ -23,15 +23,13 @@ class Analyze extends React.Component {
     }
 
     handleFile = (event) => {
-        console.log(event.target.files);
         if(event.target.files[0] !== undefined){
             let file = event.target.files[0];
             this.setState({file: file, fileName: event.target.files[0].name});
         }
         else{
             this.setState({fileName: 'Browse...'});
-        }
-        
+        }    
     }
 
     //Send replay file to backend api call

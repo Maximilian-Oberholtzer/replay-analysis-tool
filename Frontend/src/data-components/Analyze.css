@@ -30,6 +30,7 @@
 .Replay-form > input{
     border: 1px solid black;
     border-radius: 2px !important;
+    height: 37px !important;
 }
 
 .Card-analyze-page{
@@ -70,7 +71,7 @@ input[type="file"] {
     color: rgb(100, 100, 100);
     font-weight: 100;
     width: 80% !important;
-    height: 38px !important;
+    height: 37px !important;
     font-family: sans-serif;
     text-align: left;
     overflow: hidden;
