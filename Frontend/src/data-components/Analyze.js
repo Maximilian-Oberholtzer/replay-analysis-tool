@@ -6,14 +6,10 @@ import { Form, Button, CardDeck, Card } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from "axios";
 
-const token = 'YYnAMB7jvHL6t5DnY7VkWrj7wuriCnff5UBTbUeK';
-
 //Website used for replay data:  Ballchasing.com
 
 //example replay input:  f471cb81-74d5-4376-becb-368d996b5b5f  Feed vs DraLi
 //                       9d03f4bd-a853-4bda-867c-3f57c04904e6  AyyJayy vs Spider
-
-//proxy site:  https://cors-anywhere.herokuapp.com/
 
 class Analyze extends React.Component {
 
@@ -38,39 +34,32 @@ class Analyze extends React.Component {
         
     }
 
-    //Post a replay to Ballchasing.com
+    //Send replay file to backend api call
     uploadFile = () => {
-        const url = "https://ballchasing.com/api/v2/upload?visibility=public";
         let file = this.state.file;
         let formdata = new FormData();
 
         if(file !== null){
             formdata.append('file', file);
-
-            axios({
-                url: url,
-                method: "POST",
-                headers: {
-                    Authorization: `${token}`,
-                },
-                data: formdata
-            }).then((response) => {
-                console.log(response);
-                const id = response.data.id;
-                this.setState({uploadMessage: "Success! Replay ID: " + id});
-            }, (error) => {
-                console.log(error);
-                this.setState({uploadMessage: "File not valid or already uploaded."});
-            });
+            axios.post("/api/postreplay", formdata, {
+            }).then(response => {
+                if(response.data.hasOwnProperty('error') && response.data.hasOwnProperty('id')){
+                    this.setState({uploadMessage: "Replay already uploaded. Replay ID: " + response.data.id});
+                }
+                else if(response.data.hasOwnProperty('error')){
+                    this.setState({uploadMessage: "Please select a valid file."});
+                }
+                else{
+                    this.setState({uploadMessage: "Success! Replay ID: " + response.data.id});
+                }
+            })
         }
         else{
-            console.log("file cannot be null");
             this.setState({uploadMessage: "Please select a file before uploading."});
         }
-
     }
 
-    //Get replay data from bakend api call
+    //Get replay data from backend api call
     fetchReplayData = () => {
         if(this.state.key !== ''){
             axios.get("/api/getreplay/" + this.state.key).then(response => {
@@ -93,7 +82,7 @@ class Analyze extends React.Component {
         }
     }
 
-    //Render the Analyze page Output
+    //Render the Analyze page
     render(){
         return(
             <div>
