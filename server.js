@@ -3,6 +3,10 @@ const express = require('express');
 var unirest = require("unirest");
 var request = require("request");
 const path = require('path');
+const multer = require('multer');
+let upload = multer({storage: multer.memoryStorage() });
+var FormData = require('form-data');
+var fs = require('fs');
 
 const app = express();
 
@@ -34,6 +38,33 @@ app.get('/api/getreplay/:replayid', (req, res) => {
        }  
   );
 });
+
+//Post a replay
+app.post('/api/postreplay', upload.single('file'), (req, res) => {
+
+  var replayData = {
+    file: {
+      value: req.file.buffer,
+      options: {
+        filename: req.file.originalname
+      }
+    }
+  }
+  const url = "https://ballchasing.com/api/v2/upload?visibility=public";
+  
+  request(
+    url, {
+      method: "POST",
+      headers: {
+        Authorization: `${token}`,
+        'Content-Type': 'multipart/form-data'
+      },
+      formData: replayData,
+    }, function(error, response, body) {
+        res.send(body)
+    }  
+  )
+})
 
 //Get Ranks Data API
 app.get('/api/getranks/:playerid', (req, res) => {
