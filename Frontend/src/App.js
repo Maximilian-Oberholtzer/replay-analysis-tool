@@ -30,8 +30,6 @@ function App() {
 
 const HomePage = () => (
   <div>
-    <hr className="Header-hr"/>
-    <h1 className="title">Home</h1>
     <CardDeck className="Card-deck">
       <Card className="Card">
         <Card.Img variant="top" src={rlImage2} />
@@ -68,7 +66,6 @@ const HomePage = () => (
         </Card.Body>
       </Card>
     </CardDeck>
-    <hr className="Footer-hr"/>
   </div>  
 );
 

@@ -1,7 +1,8 @@
 import '../App.css';
+import './CoreStats.css';
 import { CardDeck, Card } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {XYPlot, LineSeries, VerticalBarSeries, VerticalGridLines, HorizontalGridLines, XAxis, YAxis} from 'react-vis';
+import {Bar} from 'react-chartjs-2';
 
 function CoreStats(data){
 
@@ -21,24 +22,124 @@ function CoreStats(data){
         blueGoals = bluePlayerData.stats.core.goals;
         orangeGoals = orangePlayerData.stats.core.goals;
 
+        const goalsData = {
+            labels: [bluePlayerName, orangePlayerName],
+            datasets: [
+                {
+                    label: 'Goals',
+                    data: [blueGoals, orangeGoals],
+                    backgroundColor: ['#007eff','#faa41a'],
+                    borderColor: ['rgb(10, 10, 10)', 'rgb(10, 10, 10)'],
+                    borderRadius: '10px',
+                    borderWidth: 3
+                }
+            ]
+        }
+
+        const goalsDataOptions = {
+            legend: {
+                display: false
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+
         return (
             <div>
-                <CardDeck className="Card-deck-analyze-page">
-                    <Card className="Card-analyze-page">
+                <CardDeck className="Card-deck-core-stats">
+                    <Card className="Card-core-stats">
                         <Card.Body>
                         <Card.Title>Goals</Card.Title>
-                        <XYPlot margin={{bottom: 50}} xType="ordinal" width={300} height={300}>
-                            <VerticalGridLines />
-                            <HorizontalGridLines />
-                            <XAxis />
-                            <YAxis />
-                            <VerticalBarSeries
-                                data={[{x: bluePlayerName, y: blueGoals}]} color="#007eff"
+                            <Bar
+                                data={goalsData}
+                                height={400}
+                                width={600}
+                                options={goalsDataOptions}
                             />
-                            <VerticalBarSeries
-                                data={[{x: orangePlayerName, y: orangeGoals}]} color="#faa41a"
+                        </Card.Body>
+                    </Card>
+                    <Card className="Card-core-stats">
+                        <Card.Body>
+                        <Card.Title>Goals</Card.Title>
+                            <Bar
+                                data={goalsData}
+                                height={400}
+                                width={600}
+                                options={goalsDataOptions}
                             />
-                        </XYPlot>
+                        </Card.Body>
+                    </Card>
+                    <Card className="Card-core-stats">
+                        <Card.Body>
+                        <Card.Title>Goals</Card.Title>
+                            <Bar
+                                data={goalsData}
+                                height={400}
+                                width={600}
+                                options={goalsDataOptions}
+                            />
+                        </Card.Body>
+                    </Card>
+                    <Card className="Card-core-stats">
+                        <Card.Body>
+                        <Card.Title>Goals</Card.Title>
+                            <Bar
+                                data={goalsData}
+                                height={400}
+                                width={600}
+                                options={goalsDataOptions}
+                            />
+                        </Card.Body>
+                    </Card>
+                </CardDeck>
+                <CardDeck className="Card-deck-core-stats">
+                    <Card className="Card-core-stats">
+                        <Card.Body>
+                        <Card.Title>Goals</Card.Title>
+                            <Bar
+                                data={goalsData}
+                                height={400}
+                                width={600}
+                                options={goalsDataOptions}
+                            />
+                        </Card.Body>
+                    </Card>
+                    <Card className="Card-core-stats">
+                        <Card.Body>
+                        <Card.Title>Goals</Card.Title>
+                            <Bar
+                                data={goalsData}
+                                height={400}
+                                width={600}
+                                options={goalsDataOptions}
+                            />
+                        </Card.Body>
+                    </Card>
+                    <Card className="Card-core-stats">
+                        <Card.Body>
+                        <Card.Title>Goals</Card.Title>
+                            <Bar
+                                data={goalsData}
+                                height={400}
+                                width={600}
+                                options={goalsDataOptions}
+                            />
+                        </Card.Body>
+                    </Card>
+                    <Card className="Card-core-stats">
+                        <Card.Body>
+                        <Card.Title>Goals</Card.Title>
+                            <Bar
+                                data={goalsData}
+                                height={400}
+                                width={600}
+                                options={goalsDataOptions}
+                            />
                         </Card.Body>
                     </Card>
                 </CardDeck>

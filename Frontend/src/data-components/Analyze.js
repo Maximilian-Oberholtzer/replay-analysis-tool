@@ -22,9 +22,12 @@ class Analyze extends React.Component {
 
     handleChange = (event) => {
         this.setState({key: event.target.value});
+        this.setState({analyzeMessage: ''});
     }
 
     handleFile = (event) => {
+        this.setState({analyzeMessage: ''});
+        this.setState({uploadMessage: ''});  
         if(event.target.files[0] !== undefined){
             let file = event.target.files[0];
             this.setState({file: file, fileName: event.target.files[0].name});
@@ -44,13 +47,13 @@ class Analyze extends React.Component {
             axios.post("/api/postreplay", formdata, {
             }).then(response => {
                 if(response.data.hasOwnProperty('error') && response.data.hasOwnProperty('id')){
-                    this.setState({uploadMessage: "Replay already uploaded. Replay ID: " + response.data.id});
+                    this.setState({uploadMessage: "Replay ID: " + response.data.id});
                 }
                 else if(response.data.hasOwnProperty('error')){
                     this.setState({uploadMessage: "Please select a valid file."});
                 }
                 else{
-                    this.setState({uploadMessage: "Success! Replay ID: " + response.data.id});
+                    this.setState({uploadMessage: "Replay ID: " + response.data.id});
                 }
             })
         }
@@ -75,7 +78,8 @@ class Analyze extends React.Component {
                         this.setState({replayData: response});
 
                         const scrollOptions = {
-                            duration: 1500
+                            duration: 1800,
+                            delay: 200
                         }
                         Scroll.animateScroll.scrollTo(900, scrollOptions);
                     }
@@ -91,7 +95,6 @@ class Analyze extends React.Component {
     render(){
         return(
             <div>
-                <hr className="Header-hr"/>
                 <CardDeck className="Card-deck-analyze-page">
                     <Card className="Card-analyze-page">
                         <Card.Body>
@@ -123,7 +126,6 @@ class Analyze extends React.Component {
                         </Card.Footer>
                     </Card>
                 </CardDeck>
-                <hr className="Footer-hr"/>
                 <GetReplayTitle data={this.state.replayData} />
                 <Ranks data={this.state.replayData} />
                 <CoreStats data={this.state.replayData} />
