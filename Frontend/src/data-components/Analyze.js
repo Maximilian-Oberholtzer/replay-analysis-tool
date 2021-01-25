@@ -1,7 +1,9 @@
 import React from 'react';
 import '../App.css';
 import './Analyze.css';
-import Ranks from './Ranks'
+import Ranks from './Ranks';
+import CoreStats from './CoreStats';
+import * as Scroll from 'react-scroll';
 import { Form, Button, CardDeck, Card } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from "axios";
@@ -71,6 +73,11 @@ class Analyze extends React.Component {
                     else{
                         this.setState({analyzeMessage: "Data fetch successful."});
                         this.setState({replayData: response});
+
+                        const scrollOptions = {
+                            duration: 1500
+                        }
+                        Scroll.animateScroll.scrollTo(900, scrollOptions);
                     }
                 }
             })
@@ -119,6 +126,7 @@ class Analyze extends React.Component {
                 <hr className="Footer-hr"/>
                 <GetReplayTitle data={this.state.replayData} />
                 <Ranks data={this.state.replayData} />
+                <CoreStats data={this.state.replayData} />
             </div>
         );
     } 
