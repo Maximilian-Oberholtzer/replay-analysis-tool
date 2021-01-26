@@ -1,0 +1,31 @@
+.Nav-bar{
+  z-index: 1000;
+  background-color:rgb(20,20,20);
+  height: 80px;
+}
+
+.Home-link{
+  height: 60px;
+  border-radius: 30px !important;
+  transition: 0.3s;
+}
+
+.Home-link:hover{
+  height: 64px;
+}
+
+.Button-link{
+  height: 58px;
+  margin-left: 25px;  
+  transition: 0.3s;
+}
+
+.Button-link:hover{
+  cursor: pointer;
+  height: 62px;
+}
+
+.Home-title{
+  font-size: 14px;
+  color: white !important;
+}
