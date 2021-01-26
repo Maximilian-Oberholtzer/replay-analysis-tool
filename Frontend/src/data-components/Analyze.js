@@ -43,6 +43,7 @@ class Analyze extends React.Component {
         let formdata = new FormData();
 
         if(file !== null){
+            this.setState({uploadMessage: "Loading..."});
             formdata.append('file', file);
             axios.post("/api/postreplay", formdata, {
             }).then(response => {
@@ -65,6 +66,7 @@ class Analyze extends React.Component {
     //Get replay data from backend api call
     fetchReplayData = () => {
         if(this.state.key !== ''){
+            this.setState({analyzeMessage: "Loading..."});
             axios.get("/api/getreplay/" + this.state.key).then(response => {
                 if(response.data.hasOwnProperty('error')){
                     this.setState({analyzeMessage: "Please enter a valid replay ID."});
@@ -74,7 +76,7 @@ class Analyze extends React.Component {
                         this.setState({analyzeMessage: "Please enter a solo duel replay."})
                     }
                     else{
-                        this.setState({analyzeMessage: "Data fetch successful."});
+                        this.setState({analyzeMessage: "Data fetch successful!"});
                         this.setState({replayData: response});
 
                         const scrollOptions = {
