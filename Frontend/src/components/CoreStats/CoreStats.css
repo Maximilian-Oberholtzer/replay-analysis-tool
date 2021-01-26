@@ -1,0 +1,28 @@
+.Card-deck-core-stats{
+    margin-top: 50px !important;
+    margin-left: 10% !important;
+    margin-right: 10% !important;
+}
+
+@media (min-width: 576px){
+    .Card-deck-core-stats {
+      display: block !important;
+      flex-flow: unset !important;
+    }
+}
+  
+@media (min-width: 1200px){
+    .Card-deck-core-stats {
+      display: flex !important;
+      flex-flow: row wrap !important;
+    }
+}
+
+.Card-core-stats{
+    border: 1px solid rgb(12, 12, 12) !important;
+    border-radius: 1rem;
+    margin-bottom: 30px !important;
+    margin-right: 20px !important;
+    margin-left: 20px !important;
+  }
+    
