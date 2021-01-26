@@ -1,0 +1,131 @@
+.Card-deck{
+    margin-top: 170px !important;
+    margin-left: 125px !important;
+    margin-right: 125px !important;
+    margin-bottom: 170px !important;
+}
+  
+@media (min-width: 576px){
+  .Card-deck {
+      display: block !important;
+      flex-flow: unset !important;
+    }
+}
+  
+@media (min-width: 1060px){
+    .Card-deck {
+      display: flex !important;
+      flex-flow: row wrap !important;
+    }
+}
+  
+.Card{
+    border: none !important;
+    margin-bottom: 30px !important;
+}
+  
+.overview{
+    margin: auto;
+    padding: 2vh;
+    width: 100%;
+}
+  
+.overview > div{
+    font-size: 1.5vw;
+    padding: 2vw;
+}
+  
+.selection{
+    margin: auto;
+    padding: 1vw;
+    width: 10%;
+}
+  
+.selection > nav{  
+    margin: auto;
+    border-radius: 1vw;
+    border: hidden;
+    font-size: 2vw;
+    cursor: pointer;
+}
+  
+Button{
+    background-color: rgb(10, 10, 10);
+}
+  
+.selection > nav:hover{  
+    background-color: rgb(24, 24, 24);
+}
+  
+.Menu-button{
+     width: 150px !important;
+     color: white !important;
+     background-color: rgb(20,20,20) !important;
+     border: 1px solid rgb(20,20,20) !important;
+     transition: 0.3s !important;
+     font-weight: 600 !important;
+}
+  
+.Menu-button:hover{
+    background-color: white !important;
+    color: black !important;
+}
+  
+.Home-link-style{
+    color: #2D283E;
+    text-decoration: none;
+}
+
+.Replay-form{
+    margin-top: 10px;
+    margin-bottom: 25px;
+    display: inline-block;
+    width: 90%;
+    height: 38px !important;
+    border: none;
+}
+
+.Replay-form > input{
+    border: 1px solid black;
+    border-radius: 8px !important;
+    height: 37px !important;
+}
+
+.card-footer{
+    border: none !important;
+    background-color: transparent !important;
+    height: 68px !important;
+    padding: 0px !important;
+}
+
+.Browse-file-button{
+    margin-top: 20px;
+    margin-bottom: 30px;
+    width: 70%;
+}
+
+label{
+    border: 1px solid black !important;
+    border-radius: 8px !important;
+    height: 40px !important;
+}
+
+.File-upload{
+    margin-top: 22px;
+    margin-bottom: 11px;
+}
+
+input[type="file"] {
+    display: none;
+}
+.File-upload-label {
+    padding: 6px 12px;
+    cursor: pointer;
+    color: rgb(100, 100, 100);
+    font-weight: 100;
+    width: 90% !important;
+    height: 37px !important;
+    font-family: sans-serif;
+    text-align: left;
+    overflow: hidden;
+}

@@ -1,30 +1,39 @@
 import React from 'react';
-import '../App.css';
-import './Analyze.css';
-import Ranks from './Ranks';
-import CoreStats from './CoreStats';
-import * as Scroll from 'react-scroll';
-import { Form, Button, CardDeck, Card } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from "axios";
+import * as Scroll from 'react-scroll';
+import { Button, CardDeck, Card, Form } from 'react-bootstrap';
+
+import '../../App.css';
+import './HomePage.css';
+
+import rlImage1 from '../../resources/rl-image-1.jpg';
+import rlImage2 from '../../resources/rl-image-2.jpg';
+import rlImage3 from '../../resources/rl-image-3.jpg';
+
+import Ranks from '../Ranks/Ranks';
+import CoreStats from '../CoreStats/CoreStats';
+
+
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 //Website used for replay data:  Ballchasing.com
 
-//example replay input:  f471cb81-74d5-4376-becb-368d996b5b5f  Feed vs DraLi
-//                       9d03f4bd-a853-4bda-867c-3f57c04904e6  AyyJayy vs Spider
+//example replay input: 9d03f4bd-a853-4bda-867c-3f57c04904e6  AyyJayy vs Spider
 
-class Analyze extends React.Component {
+class HomePage extends React.Component {
 
-    constructor(props) {
+    constructor(props){
         super(props);
         this.state = {key: '', analyzeMessage: '', uploadMessage: '', replayData: null, fileName: 'Browse...', file: null};
     }
 
+    // When user types into enter ID field
     handleChange = (event) => {
         this.setState({key: event.target.value});
         this.setState({analyzeMessage: ''});
     }
 
+    // When user chooses a file to upload
     handleFile = (event) => {
         this.setState({analyzeMessage: ''});
         this.setState({uploadMessage: ''});  
@@ -93,57 +102,70 @@ class Analyze extends React.Component {
         }
     }
 
-    //Render the Analyze page
+
+    //Render the Home Page output
     render(){
         return(
             <div>
-                <CardDeck className="Card-deck-analyze-page">
-                    <Card className="Card-analyze-page">
-                        <Card.Body>
-                        <Card.Title>Enter your replay ID</Card.Title>
-                            <Form.Group className="Replay-form">
-                                <Form.Control type="textarea" placeholder="Replay ID" onChange={this.handleChange}/>
-                            </Form.Group>
-                            <div />
-                            <Button className="Menu-button" onClick={this.fetchReplayData} > Analyze </Button> 
-                        </Card.Body>
-                        <Card.Footer>
-                            <small className="text-muted">{this.state.analyzeMessage}</small>
-                        </Card.Footer>
-                    </Card>
-                    <Card className="Card-analyze-page">
-                        <Card.Body>
-                        <Card.Title>Upload a Replay</Card.Title>
-                            <div className="File-upload">
-                                <label htmlFor="file-upload" className="File-upload-label">
-                                    {this.state.fileName}
-                                </label>
-                                <input id="file-upload" type="file" onChange={(e)=>this.handleFile(e)}/>
-                            </div>
-                            <div />
-                            <Button className="Menu-button" onClick={this.uploadFile}> Upload </Button>
-                        </Card.Body>
-                        <Card.Footer>
-                            <small className="text-muted">{this.state.uploadMessage}</small>
-                        </Card.Footer>
-                    </Card>
+                <CardDeck className="Card-deck">
+                <Card className="Card">
+                    <Card.Img variant="top" src={rlImage2} />
+                    <Card.Body>
+                    <Card.Title>Get Started</Card.Title>
+                    <Form.Group className="Replay-form">
+                        <Form.Control type="textarea" placeholder="Replay ID" onChange={this.handleChange}/>
+                    </Form.Group>
+                        <Button className="Menu-button" onClick={this.fetchReplayData} > Analyze </Button>
+                    </Card.Body>
+                    <Card.Footer>
+                        <small className="text-muted">{this.state.analyzeMessage}</small>
+                    </Card.Footer>
+                </Card>
+                <Card className="Card">
+                    <Card.Img variant="top" src={rlImage1} />
+                    <Card.Body>
+                    <Card.Title>Upload Replay</Card.Title>
+                        <div className="File-upload">
+                            <label htmlFor="file-upload" className="File-upload-label">
+                                {this.state.fileName}
+                            </label>
+                             <input id="file-upload" type="file" onChange={(e)=>this.handleFile(e)}/>
+                        </div>
+                        <div />
+                        <Button className="Menu-button" onClick={this.uploadFile}> Upload </Button>
+                    </Card.Body>
+                    <Card.Footer>
+                        <small className="text-muted">{this.state.uploadMessage}</small>
+                    </Card.Footer>
+                </Card>
+                <Card className="Card">
+                    <Card.Img variant="top" src={rlImage3} />
+                    <Card.Body>
+                    <Card.Title>Learn More</Card.Title>
+                    <Card.Text>
+                        Learn about the creator of this tool and how it works.
+                    </Card.Text>
+                        <Button className="Menu-button"> About </Button>
+                    </Card.Body>
+                </Card>
                 </CardDeck>
                 <GetReplayTitle data={this.state.replayData} />
                 <Ranks data={this.state.replayData} />
                 <CoreStats data={this.state.replayData} />
-            </div>
+            </div>  
         );
-    } 
+    }
+    
 }
 
-    function GetReplayTitle(data){
-        if(data.data != null){
-            const title = data.data.data.title.toString();
-            return <h1 className="title"> Replay title: {title} </h1>;
-        }
-        else{
-            return(null);
-        }      
+function GetReplayTitle(data){
+    if(data.data != null){
+        const title = data.data.data.title.toString();
+        return <h1 className="title"> Replay title: {title} </h1>;
     }
+    else{
+        return(null);
+    }      
+}
 
-export default Analyze;
+export default HomePage;

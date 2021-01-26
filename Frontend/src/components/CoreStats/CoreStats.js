@@ -1,4 +1,4 @@
-import '../App.css';
+import '../../App.css';
 import './CoreStats.css';
 import { CardDeck, Card } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';

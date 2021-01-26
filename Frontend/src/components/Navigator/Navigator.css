@@ -1,6 +1,6 @@
 .Nav-bar{
   z-index: 1000;
-  background-color:rgb(10, 10, 10);
+  background-color:rgb(20,20,20);
   height: 80px;
 }
 
@@ -16,7 +16,7 @@
 
 .Button-link{
   height: 58px;
-  margin-left: 25px;
+  margin-left: 25px;  
   transition: 0.3s;
 }
 

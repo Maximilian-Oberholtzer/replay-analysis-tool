@@ -1,9 +1,7 @@
 import './App.css';
-import Navigator from './main-components/Navigator';
-import Footer from './main-components/Footer';
-import About from './main-components/About';
-import Analyze from './data-components/Analyze';
-import HomePage from './main-components/HomePage';
+import Navigator from './components/Navigator/Navigator';
+import Footer from './components/Footer/Footer';
+import HomePage from './components/HomePage/HomePage';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 function App() {
@@ -13,8 +11,6 @@ function App() {
         <Navigator />
           <Switch>
             <Route path={process.env.PUBLIC_URL + '/'} exact component={HomePage} /> 
-            <Route path={process.env.PUBLIC_URL + '/about'} component={About} />
-            <Route path={process.env.PUBLIC_URL + '/analyze'} component={Analyze} />
           </Switch>
           <Footer />
       </div> 

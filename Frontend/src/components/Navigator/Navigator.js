@@ -1,11 +1,11 @@
 import React from 'react';
-import '../App.css';
+import '../../App.css';
 import './Navigator.css';
-import twitch from '../resources/twitch-icon.svg';
-import discord from '../resources/discord-icon.svg';
-import feed from '../resources/feed-icon.jpg';
-import steam from '../resources/steam-icon.svg';
-import tiktok from '../resources/tiktok-icon.svg';
+import twitch from '../../resources/twitch-icon.svg';
+import discord from '../../resources/discord-icon.svg';
+import feed from '../../resources/feed-icon.jpg';
+import steam from '../../resources/steam-icon.svg';
+import tiktok from '../../resources/tiktok-icon.svg';
 
 import {Navbar, Image} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
