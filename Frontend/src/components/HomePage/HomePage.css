@@ -1,8 +1,8 @@
 .Card-deck{
-    margin-top: 170px !important;
+    margin-top: 180px !important;
     margin-left: 125px !important;
     margin-right: 125px !important;
-    margin-bottom: 170px !important;
+    margin-bottom: 240px !important;
 }
   
 @media (min-width: 576px){
@@ -22,6 +22,11 @@
 .Card{
     border: none !important;
     margin-bottom: 30px !important;
+}
+
+.About-text{
+    margin-top: 28px !important;
+    margin-bottom: 32px !important;
 }
   
 .overview{
@@ -50,7 +55,7 @@
 }
   
 Button{
-    background-color: rgb(10, 10, 10);
+    background-color: rgb(20,20,20);
 }
   
 .selection > nav:hover{  
@@ -68,7 +73,7 @@ Button{
   
 .Menu-button:hover{
     background-color: white !important;
-    color: black !important;
+    color: rgb(20,20,20) !important;
 }
   
 .Home-link-style{
