@@ -1,7 +1,7 @@
 .Card-deck-player-ranks{
-    margin-top: 50px !important;
-    margin-left: 10% !important;
-    margin-right: 10% !important;
+    margin-top: 80px !important;
+    margin-left: 15% !important;
+    margin-right: 15% !important;
 }
 
 @media (min-width: 576px){
@@ -24,10 +24,12 @@
 
 .Rank-img{
     height: 60px;
-    margin-bottom: 4px;
+    margin-bottom: 12px;
+    margin-left: 24px;
 }
 
 .Card-player-ranks{
+    background-color: #e9ecef !important;
     border: 1px solid rgb(12, 12, 12) !important;
     border-radius: 1rem;
     margin-bottom: 30px !important;

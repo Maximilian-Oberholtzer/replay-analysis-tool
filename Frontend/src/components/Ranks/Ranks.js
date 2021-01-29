@@ -83,20 +83,23 @@ import unranked from '../../resources/Unranked.png';
 
         })
 
+        // Player ranks card and player playstyle card
         return(
             <CardDeck className="Card-deck-player-ranks">
                     <Card className="Card-player-ranks">
                         <Card.Body>
                         <Card.Title className="Card-player-ranks-title">Ranks</Card.Title>
                         <h1 className="title"> {playerBlueName}: {playerBlueRank} 
-                            <img className="Rank-img" alt="" src={bronze1} /> 
+                            <GetRankImage rank={playerBlueRank} />
                         </h1>
-                        <h1 className="title"> {playerOrangeName}: {playerOrangeRank} </h1>
+                        <h1 className="title"> {playerOrangeName}: {playerOrangeRank}
+                            <GetRankImage rank={playerOrangeRank} />
+                        </h1>
                         </Card.Body>
                     </Card>
                     <Card className="Card-player-ranks">
                         <Card.Body>
-                        <Card.Title className="Card-player-ranks-title">Predicted Playstyle</Card.Title>
+                        <Card.Title className="Card-player-ranks-title">Match Playstyle</Card.Title>
                         </Card.Body>
                     </Card>
                 </CardDeck>
@@ -106,5 +109,91 @@ import unranked from '../../resources/Unranked.png';
     else{
         return(null);
     }
+
+}
+
+function GetRankImage(r){
+
+    var rankImg = unranked;
+    var rank;
+
+    if(r != null){
+        rank = parseInt(r.rank);
+
+        if(rank >= 0 && rank < 149){
+            rankImg = bronze1;
+        }
+        else if(rank >= 149 && rank < 207){
+            rankImg = bronze2;
+        }
+        else if(rank >= 207 && rank < 264){
+            rankImg = bronze3;
+        }
+        else if(rank >= 264 && rank < 323){
+            rankImg = silver1;
+        }
+        else if(rank >= 323 && rank < 387){
+            rankImg = silver2;
+        }
+        else if(rank >= 387 && rank < 455){
+            rankImg = silver3;
+        }
+        else if(rank >= 455 && rank < 513){
+            rankImg = gold1;
+        }
+        else if(rank >= 513 && rank < 567){
+            rankImg = gold2;
+        }
+        else if(rank >= 567 && rank < 634){
+            rankImg = gold3;
+        }
+        else if(rank >= 634 && rank < 686){
+            rankImg = platinum1;
+        }
+        else if(rank >= 686 && rank < 746){
+            rankImg = platinum2;
+        }
+        else if(rank >= 746 && rank < 807){
+            rankImg = platinum3;
+        }
+        else if(rank >= 807 && rank < 866){
+            rankImg = diamond1;
+        }
+        else if(rank >= 866 && rank < 925){
+            rankImg = diamond2;
+        }
+        else if(rank >= 925 && rank < 987){
+            rankImg = diamond3;
+        }
+        else if(rank >= 987 && rank < 1047){
+            rankImg = champion1;
+        }
+        else if(rank >= 1047 && rank < 1106){
+            rankImg = champion2;
+        }
+        else if(rank >= 1106 && rank < 1167){
+            rankImg = champion3;
+        }
+        else if(rank >= 1167 && rank < 1225){
+            rankImg = grandChampion1;
+        }
+        else if(rank >= 1225 && rank < 1287){
+            rankImg = grandChampion2;
+        }
+        else if(rank >= 1287 && rank < 1344){
+            rankImg = grandChampion3;
+        }
+        else if(rank >= 1344){
+            rankImg = supersonic;
+        }
+
+        return(
+            <img className="Rank-img" alt="" src={rankImg} /> 
+        )
+
+    }
+    else{
+        return(null)        
+    }         
 
 }
