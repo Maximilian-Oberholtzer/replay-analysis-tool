@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from "axios";
 import * as Scroll from 'react-scroll';
+import {CopyToClipboard} from 'react-copy-to-clipboard';
 import { Button, CardDeck, Card, Form } from 'react-bootstrap';
 
 import '../../App.css';
@@ -26,7 +27,16 @@ class HomePage extends React.Component {
 
     constructor(props){
         super(props);
-        this.state = {key: '', analyzeMessage: '', uploadMessage: '', replayData: null, fileName: 'Browse...', file: null, scrollButtonClass: ''};
+        this.state = {
+            key: '', 
+            analyzeMessage: '', 
+            uploadMessage: '', 
+            replayData: null, 
+            replayID: null, 
+            fileName: 'Browse...', 
+            file: null, 
+            scrollButtonClass: ''
+        };
     }
 
     componentDidMount() {
@@ -66,14 +76,12 @@ class HomePage extends React.Component {
 
     // When user types into enter ID field
     handleChange = (event) => {
-        this.setState({key: event.target.value});
-        this.setState({analyzeMessage: ''});
+        this.setState({key: event.target.value, analyzeMessage: ''});
     }
 
     // When user chooses a file to upload
     handleFile = (event) => {
-        this.setState({analyzeMessage: ''});
-        this.setState({uploadMessage: ''});  
+        this.setState({analyzeMessage: '', uploadMessage: '', replayID: null});
         if(event.target.files[0] !== undefined){
             let file = event.target.files[0];
             this.setState({file: file, fileName: event.target.files[0].name});
@@ -95,12 +103,14 @@ class HomePage extends React.Component {
             }).then(response => {
                 if(response.data.hasOwnProperty('error') && response.data.hasOwnProperty('id')){
                     this.setState({uploadMessage: "Replay ID: " + response.data.id});
+                    this.setState({replayID: response.data.id});
                 }
                 else if(response.data.hasOwnProperty('error')){
                     this.setState({uploadMessage: "Please select a valid file."});
                 }
                 else{
                     this.setState({uploadMessage: "Replay ID: " + response.data.id});
+                    this.setState({replayID: response.data.id});
                 }
             })
         }
@@ -185,11 +195,14 @@ class HomePage extends React.Component {
                         <Button className="Menu-button" onClick={this.uploadFile}> Upload </Button>
                     </Card.Body>
                     <Card.Footer>
-                        <small className="text-muted">{this.state.uploadMessage}</small>
+                        <small className="text-muted">
+                            {this.state.uploadMessage}
+                            <GetCopyToClipboardButton data={this.state.replayID}/>
+                        </small>
                     </Card.Footer>
                 </Card>
                 </CardDeck>
-                <About onShow={this.listenScroll}/>
+                <About />
                 <Scroll.Element name="Analysis">
                     <GetReplayTitle data={this.state.replayData} />
                     <Ranks data={this.state.replayData} />
@@ -201,12 +214,29 @@ class HomePage extends React.Component {
     
 }
 
+function GetCopyToClipboardButton(data){
+    if(data.data != null){
+        return(
+            <CopyToClipboard text={data.data}>
+                <Button className="Copy-button">&#x029C9;</Button>
+            </CopyToClipboard>
+        )
+    }
+    else{
+        return null;
+    }
+}
+
 function GetReplayTitle(data){
     if(data.data != null){
-        const title = data.data.data.title.toString();
+        const bluePlayer = data.data.data.blue.players[0].name;
+        const orangeplayer = data.data.data.orange.players[0].name;
+        const replayDateString = data.data.data.date.toString();
+        const replayDate = replayDateString.substring(0,10);
         return(
             <div>
-                <h1 className="Replay-title"> Replay title: {title} </h1>
+                <h1 className="Replay-title"> {bluePlayer} vs. {orangeplayer} </h1>
+                <div> {replayDate} </div>
             </div>
         ) 
     }

@@ -68,8 +68,10 @@ app.post('/api/postreplay', upload.single('file'), (req, res) => {
 
 //Get Ranks Data API
 app.get('/api/getranks/:playerid', (req, res) => {
-  const playerID = req.params.playerid;
-  const url = "https://api.yannismate.de/rank/steam/" + playerID;
+  const playerString = req.params.playerid.toString();
+  const platform = playerString.substring(0, playerString.indexOf('+'));
+  const id = playerString.substring(playerString.indexOf('+') + 1);
+  const url = "https://api.yannismate.de/rank/" + platform + "/" + id;
   request(
     url, {
       method: "GET"

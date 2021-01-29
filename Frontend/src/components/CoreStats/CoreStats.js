@@ -13,7 +13,7 @@ function CoreStats(data){
 
 
     if(data.data !== null){
-        console.log(data);
+        //console.log(data);
         let bluePlayerData = data.data.data.blue.players[0];
         let orangePlayerData = data.data.data.orange.players[0];
 
@@ -51,52 +51,6 @@ function CoreStats(data){
 
         return (
             <div>
-                <CardDeck className="Card-deck-core-stats">
-                    <Card className="Card-core-stats">
-                        <Card.Body>
-                        <Card.Title>Goals</Card.Title>
-                            <Bar
-                                data={goalsData}
-                                height={400}
-                                width={600}
-                                options={goalsDataOptions}
-                            />
-                        </Card.Body>
-                    </Card>
-                    <Card className="Card-core-stats">
-                        <Card.Body>
-                        <Card.Title>Goals</Card.Title>
-                            <Bar
-                                data={goalsData}
-                                height={400}
-                                width={600}
-                                options={goalsDataOptions}
-                            />
-                        </Card.Body>
-                    </Card>
-                    <Card className="Card-core-stats">
-                        <Card.Body>
-                        <Card.Title>Goals</Card.Title>
-                            <Bar
-                                data={goalsData}
-                                height={400}
-                                width={600}
-                                options={goalsDataOptions}
-                            />
-                        </Card.Body>
-                    </Card>
-                    <Card className="Card-core-stats">
-                        <Card.Body>
-                        <Card.Title>Goals</Card.Title>
-                            <Bar
-                                data={goalsData}
-                                height={400}
-                                width={600}
-                                options={goalsDataOptions}
-                            />
-                        </Card.Body>
-                    </Card>
-                </CardDeck>
                 <CardDeck className="Card-deck-core-stats">
                     <Card className="Card-core-stats">
                         <Card.Body>
