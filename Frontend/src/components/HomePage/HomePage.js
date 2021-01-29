@@ -128,6 +128,7 @@ class HomePage extends React.Component {
                         Scroll.scroller.scrollTo('Analysis', {
                             duration: 2000,
                             delay: 200,
+                            offset: -84,
                             smooth: true
                         });
                     }
@@ -144,7 +145,8 @@ class HomePage extends React.Component {
     render(){
         return(
             <div>
-                <Button className={'Return-to-top-button ' + this.state.scrollButtonClass} onClick={this.scrollToTop}>&#129045;</Button>   
+                <Button className={'Return-to-top-button ' + this.state.scrollButtonClass} onClick={this.scrollToTop}>&#129045;</Button>
+                <h1 className="Top-page-title">Feed's Replay Analysis Tool </h1>   
                 <CardDeck className="Card-deck">
                 <Card className="Card">
                     <Card.Img variant="top" src={rlImage2} />
@@ -161,7 +163,7 @@ class HomePage extends React.Component {
                 </Card>
                 <Card className="Card">
                     <Card.Img variant="top" src={rlImage1} />
-                    <Card.Body>
+                    <Card.Body className="About-card">
                     <Card.Title>Need help?</Card.Title>
                     <Card.Text className="About-text">
                         Click here to find out more about this analysis tool.
@@ -204,7 +206,7 @@ function GetReplayTitle(data){
         const title = data.data.data.title.toString();
         return(
             <div>
-                <h1 className="title"> Replay title: {title} </h1>
+                <h1 className="Replay-title"> Replay title: {title} </h1>
             </div>
         ) 
     }

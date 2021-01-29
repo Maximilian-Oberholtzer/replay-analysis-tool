@@ -34,7 +34,7 @@ function About(){
                     <Card>
                         <Card.Header>
                         <Accordion.Toggle as={Button} variant="link" eventKey="1" className="Accordion-button">
-                            Where can I find my saved Replay?
+                            Where can I find my saved replay?
                         </Accordion.Toggle>
                         </Card.Header>
                         <Accordion.Collapse eventKey="1">
