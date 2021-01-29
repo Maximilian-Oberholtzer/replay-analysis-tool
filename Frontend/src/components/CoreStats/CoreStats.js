@@ -13,7 +13,7 @@ function CoreStats(data){
 
 
     if(data.data !== null){
-        //console.log(data);
+        console.log(data);
         let bluePlayerData = data.data.data.blue.players[0];
         let orangePlayerData = data.data.data.orange.players[0];
 

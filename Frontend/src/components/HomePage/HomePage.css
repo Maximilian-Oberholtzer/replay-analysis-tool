@@ -1,8 +1,12 @@
+.Top-page-title{
+    margin-top: 80px;
+}
+
 .Card-deck{
-    margin-top: 180px !important;
-    margin-left: 125px !important;
-    margin-right: 125px !important;
-    margin-bottom: 240px !important;
+    margin-top: 100px !important;
+    margin-left: 5% !important;
+    margin-right: 5% !important;
+    margin-bottom: 160px !important;
 }
   
 @media (min-width: 576px){
@@ -60,6 +64,10 @@ button:focus{
 .About-text{
     margin-top: 28px !important;
     margin-bottom: 32px !important;
+}
+
+.About-card{
+    margin-bottom: 52px !important;
 }
   
 .overview{
@@ -163,7 +171,10 @@ input[type="file"] {
     font-weight: 100;
     width: 90% !important;
     height: 37px !important;
-    font-family: sans-serif;
     text-align: left;
     overflow: hidden;
+}
+
+.Replay-title{
+    margin-top: 98px;
 }

@@ -10,12 +10,6 @@
   overflow: hidden;
 }
 
-.title{
-  margin-top: 85px;
-  font-size: 42px;
-  font-weight: bold;
-}
-
 .Header-hr{
   border: none;
   height: 1px !important;
