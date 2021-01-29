@@ -9,9 +9,11 @@ import './HomePage.css';
 import rlImage1 from '../../resources/rl-image-1.jpg';
 import rlImage2 from '../../resources/rl-image-2.jpg';
 import rlImage3 from '../../resources/rl-image-3.jpg';
+import feedImage from '../../resources/feed.png';
 
 import Ranks from '../Ranks/Ranks';
 import CoreStats from '../CoreStats/CoreStats';
+import About from '../About/About'
 
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -24,7 +26,42 @@ class HomePage extends React.Component {
 
     constructor(props){
         super(props);
-        this.state = {key: '', analyzeMessage: '', uploadMessage: '', replayData: null, fileName: 'Browse...', file: null};
+        this.state = {key: '', analyzeMessage: '', uploadMessage: '', replayData: null, fileName: 'Browse...', file: null, scrollButtonClass: ''};
+    }
+
+    componentDidMount() {
+        window.addEventListener('scroll', this.listenScroll);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('scroll', this.listenScroll);
+    }
+
+    // Scroll to top button
+    scrollToTop = () => {
+        Scroll.animateScroll.scrollToTop();
+    }
+
+    // Always listen for scroll position
+    listenScroll = () => {
+        if(window.pageYOffset < 300){
+            if(this.state.scrollButtonClass !== ''){
+                this.setState({scrollButtonClass: ''});
+            }    
+        }
+        else{
+            if(this.state.scrollButtonClass === ''){
+                this.setState({scrollButtonClass: 'Return-to-top-button-visible'});
+            } 
+        }
+    }
+
+    // Scroll to about section automatically
+    aboutClick = () => {
+        Scroll.scroller.scrollTo('About', {
+            duration: 1200,
+            smooth: true
+        });
     }
 
     // When user types into enter ID field
@@ -88,11 +125,11 @@ class HomePage extends React.Component {
                         this.setState({analyzeMessage: "Data fetch successful!"});
                         this.setState({replayData: response});
 
-                        const scrollOptions = {
-                            duration: 1800,
-                            delay: 200
-                        }
-                        Scroll.animateScroll.scrollTo(900, scrollOptions);
+                        Scroll.scroller.scrollTo('Analysis', {
+                            duration: 2000,
+                            delay: 200,
+                            smooth: true
+                        });
                     }
                 }
             })
@@ -107,6 +144,7 @@ class HomePage extends React.Component {
     render(){
         return(
             <div>
+                <Button className={'Return-to-top-button ' + this.state.scrollButtonClass} onClick={this.scrollToTop}>&#129045;</Button>   
                 <CardDeck className="Card-deck">
                 <Card className="Card">
                     <Card.Img variant="top" src={rlImage2} />
@@ -124,6 +162,16 @@ class HomePage extends React.Component {
                 <Card className="Card">
                     <Card.Img variant="top" src={rlImage1} />
                     <Card.Body>
+                    <Card.Title>Need help?</Card.Title>
+                    <Card.Text className="About-text">
+                        Click here to find out more about this analysis tool.
+                    </Card.Text>
+                        <Button className="Menu-button" onClick={this.aboutClick}> About </Button>
+                    </Card.Body>
+                </Card>
+                <Card className="Card">
+                    <Card.Img variant="top" src={rlImage3} />
+                    <Card.Body>
                     <Card.Title>Upload Replay</Card.Title>
                         <div className="File-upload">
                             <label htmlFor="file-upload" className="File-upload-label">
@@ -138,20 +186,13 @@ class HomePage extends React.Component {
                         <small className="text-muted">{this.state.uploadMessage}</small>
                     </Card.Footer>
                 </Card>
-                <Card className="Card">
-                    <Card.Img variant="top" src={rlImage3} />
-                    <Card.Body>
-                    <Card.Title>Learn More</Card.Title>
-                    <Card.Text>
-                        Learn about the creator of this tool and how it works.
-                    </Card.Text>
-                        <Button className="Menu-button"> About </Button>
-                    </Card.Body>
-                </Card>
                 </CardDeck>
-                <GetReplayTitle data={this.state.replayData} />
-                <Ranks data={this.state.replayData} />
-                <CoreStats data={this.state.replayData} />
+                <About onShow={this.listenScroll}/>
+                <Scroll.Element name="Analysis">
+                    <GetReplayTitle data={this.state.replayData} />
+                    <Ranks data={this.state.replayData} />
+                    <CoreStats data={this.state.replayData} />
+                </Scroll.Element>
             </div>  
         );
     }
@@ -161,7 +202,11 @@ class HomePage extends React.Component {
 function GetReplayTitle(data){
     if(data.data != null){
         const title = data.data.data.title.toString();
-        return <h1 className="title"> Replay title: {title} </h1>;
+        return(
+            <div>
+                <h1 className="title"> Replay title: {title} </h1>
+            </div>
+        ) 
     }
     else{
         return(null);

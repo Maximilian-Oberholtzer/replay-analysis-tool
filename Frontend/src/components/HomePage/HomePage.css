@@ -1,8 +1,8 @@
 .Card-deck{
-    margin-top: 170px !important;
+    margin-top: 180px !important;
     margin-left: 125px !important;
     margin-right: 125px !important;
-    margin-bottom: 170px !important;
+    margin-bottom: 240px !important;
 }
   
 @media (min-width: 576px){
@@ -18,10 +18,48 @@
       flex-flow: row wrap !important;
     }
 }
+
+.Return-to-top-button-visible{
+    opacity: 1 !important;
+    pointer-events: all !important;
+}
+
+.Return-to-top-button{
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    font-size: 26px;
+    font-weight: 600;
+    background-color:  rgb(20,20,20) !important;
+    border: 1px solid  rgb(20,20,20) !important;
+    right: 3rem;
+    bottom: 4rem;
+    z-index: 20;
+    position: fixed;
+    opacity: 0;
+    transition: transform .4s ease,opacity .4s ease, 0.3s;
+    pointer-events: none;
+}
+
+.Return-to-top-button:hover{
+    background-color:  white !important;
+    border: 1px solid  rgb(20,20,20) !important;
+    color: rgb(20,20,20) !important;
+}
+
+button:focus{
+    box-shadow: none !important;
+}
+
   
 .Card{
     border: none !important;
     margin-bottom: 30px !important;
+}
+
+.About-text{
+    margin-top: 28px !important;
+    margin-bottom: 32px !important;
 }
   
 .overview{
@@ -50,7 +88,7 @@
 }
   
 Button{
-    background-color: rgb(10, 10, 10);
+    background-color: rgb(20,20,20);
 }
   
 .selection > nav:hover{  
@@ -68,7 +106,7 @@ Button{
   
 .Menu-button:hover{
     background-color: white !important;
-    color: black !important;
+    color: rgb(20,20,20) !important;
 }
   
 .Home-link-style{
