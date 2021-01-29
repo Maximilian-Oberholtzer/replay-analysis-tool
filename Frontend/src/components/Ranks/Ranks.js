@@ -1,8 +1,36 @@
 import React, {useState} from 'react';
 import '../../App.css';
+import './Ranks.css';
 import axios from "axios";
 
-function Ranks(data){
+import { CardDeck, Card } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import bronze1 from '../../resources/Bronze1.png';
+import bronze2 from '../../resources/Bronze2.png';
+import bronze3 from '../../resources/Bronze3.png';
+import silver1 from '../../resources/Silver1.png';
+import silver2 from '../../resources/Silver2.png';
+import silver3 from '../../resources/Silver3.png';
+import gold1 from '../../resources/Gold1.png';
+import gold2 from '../../resources/Gold2.png';
+import gold3 from '../../resources/Gold3.png';
+import platinum1 from '../../resources/Platinum1.png';
+import platinum2 from '../../resources/Platinum2.png';
+import platinum3 from '../../resources/Platinum3.png';
+import diamond1 from '../../resources/Diamond1.png';
+import diamond2 from '../../resources/Diamond2.png';
+import diamond3 from '../../resources/Diamond3.png';
+import champion1 from '../../resources/Champion1.png';
+import champion2 from '../../resources/Champion2.png';
+import champion3 from '../../resources/Champion3.png';
+import grandChampion1 from '../../resources/Grand_champion1.png';
+import grandChampion2 from '../../resources/Grand_champion2.png';
+import grandChampion3 from '../../resources/Grand_champion3.png';
+import supersonic from '../../resources/Supersonic.png';
+import unranked from '../../resources/Unranked.png';
+
+    export default function Ranks(data){
 
     const [playerBlueRank, setBlueValue] = useState(null);
     const [playerOrangeRank, setOrangeValue] = useState(null);
@@ -56,12 +84,23 @@ function Ranks(data){
         })
 
         return(
-            <div>
-                <h1 className="title"> {playerBlueName}'s Rank: {playerBlueRank} </h1>
-                <h1 className="title"> {playerOrangeName}'s Rank: {playerOrangeRank} </h1>
-                <hr className="Footer-hr"/>
-            </div>
-        ); 
+            <CardDeck className="Card-deck-player-ranks">
+                    <Card className="Card-player-ranks">
+                        <Card.Body>
+                        <Card.Title className="Card-player-ranks-title">Ranks</Card.Title>
+                        <h1 className="title"> {playerBlueName}: {playerBlueRank} 
+                            <img className="Rank-img" alt="" src={bronze1} /> 
+                        </h1>
+                        <h1 className="title"> {playerOrangeName}: {playerOrangeRank} </h1>
+                        </Card.Body>
+                    </Card>
+                    <Card className="Card-player-ranks">
+                        <Card.Body>
+                        <Card.Title className="Card-player-ranks-title">Predicted Playstyle</Card.Title>
+                        </Card.Body>
+                    </Card>
+                </CardDeck>
+        );
 
     }
     else{
@@ -69,5 +108,3 @@ function Ranks(data){
     }
 
 }
-
-export default Ranks;

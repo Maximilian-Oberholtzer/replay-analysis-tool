@@ -1,0 +1,36 @@
+.Card-deck-player-ranks{
+    margin-top: 50px !important;
+    margin-left: 10% !important;
+    margin-right: 10% !important;
+}
+
+@media (min-width: 576px){
+    .Card-deck-player-ranks {
+      display: block !important;
+      flex-flow: unset !important;
+    }
+}
+  
+@media (min-width: 1200px){
+    .Card-deck-player-ranks {
+      display: flex !important;
+      flex-flow: row wrap !important;
+    }
+}
+
+.Card-player-ranks-title{
+    margin-bottom: 1.75rem !important; 
+}
+
+.Rank-img{
+    height: 60px;
+    margin-bottom: 4px;
+}
+
+.Card-player-ranks{
+    border: 1px solid rgb(12, 12, 12) !important;
+    border-radius: 1rem;
+    margin-bottom: 30px !important;
+    margin-right: 20px !important;
+    margin-left: 20px !important;
+  }
