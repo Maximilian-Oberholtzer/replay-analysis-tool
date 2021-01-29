@@ -26,7 +26,34 @@ class HomePage extends React.Component {
 
     constructor(props){
         super(props);
-        this.state = {key: '', analyzeMessage: '', uploadMessage: '', replayData: null, fileName: 'Browse...', file: null};
+        this.state = {key: '', analyzeMessage: '', uploadMessage: '', replayData: null, fileName: 'Browse...', file: null, scrollButtonClass: ''};
+    }
+
+    componentDidMount() {
+        window.addEventListener('scroll', this.listenScroll);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('scroll', this.listenScroll);
+    }
+
+    // Scroll to top button
+    scrollToTop = () => {
+        Scroll.animateScroll.scrollToTop();
+    }
+
+    // Always listen for scroll position
+    listenScroll = () => {
+        if(window.pageYOffset < 300){
+            if(this.state.scrollButtonClass !== ''){
+                this.setState({scrollButtonClass: ''});
+            }    
+        }
+        else{
+            if(this.state.scrollButtonClass === ''){
+                this.setState({scrollButtonClass: 'Return-to-top-button-visible'});
+            } 
+        }
     }
 
     // Scroll to about section automatically
@@ -117,6 +144,7 @@ class HomePage extends React.Component {
     render(){
         return(
             <div>
+                <Button className={'Return-to-top-button ' + this.state.scrollButtonClass} onClick={this.scrollToTop}>&#129045;</Button>   
                 <CardDeck className="Card-deck">
                 <Card className="Card">
                     <Card.Img variant="top" src={rlImage2} />
@@ -159,7 +187,7 @@ class HomePage extends React.Component {
                     </Card.Footer>
                 </Card>
                 </CardDeck>
-                <About />
+                <About onShow={this.listenScroll}/>
                 <Scroll.Element name="Analysis">
                     <GetReplayTitle data={this.state.replayData} />
                     <Ranks data={this.state.replayData} />
@@ -174,7 +202,11 @@ class HomePage extends React.Component {
 function GetReplayTitle(data){
     if(data.data != null){
         const title = data.data.data.title.toString();
-        return <h1 className="title"> Replay title: {title} </h1>;
+        return(
+            <div>
+                <h1 className="title"> Replay title: {title} </h1>
+            </div>
+        ) 
     }
     else{
         return(null);

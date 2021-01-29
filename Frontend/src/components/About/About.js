@@ -1,4 +1,4 @@
-import { Jumbotron, Card, CardColumns } from 'react-bootstrap';
+import { Jumbotron, Card, Accordion, Button } from 'react-bootstrap';
 import * as Scroll from 'react-scroll';
 
 import '../../App.css';
@@ -8,102 +8,74 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function About(){
 
-
-
+    const openBallchasingLink = (event) => {
+        event.preventDefault(); 
+        window.open('https://ballchasing.com', '_blank');   
+    }
 
     return(
         <Scroll.Element name="About">
             <Jumbotron className="About-section">
-                <h1 className="About-title">About this tool.</h1>
-                <CardColumns>
+                <h1 className="About-title">Frequently Asked Questions</h1>
+                <Accordion defaultActiveKey="0">
                     <Card>
-                        <Card.Body>
-                        <Card.Title>Card title that wraps to a new line</Card.Title>
-                        <Card.Text>
-                            This is a longer card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.
-                        </Card.Text>
+                        <Card.Header>
+                        <Accordion.Toggle as={Button} variant="link" eventKey="0" className="Accordion-button">
+                            What is a Replay ID?
+                        </Accordion.Toggle>
+                        </Card.Header>
+                        <Accordion.Collapse eventKey="0">
+                        <Card.Body className="Accordion-text">
+                            Replay ID's can be found at <Button className="Ballchasing-link" onClick={openBallchasingLink}>Ballchasing.com</Button> <br />
+                            Example ID:  https://ballchasing.com/replay/<mark>9621655d-704d-454e-89b7-cda9718fed23</mark>
                         </Card.Body>
-                    </Card>
-                    <Card className="p-3">
-                        <blockquote className="blockquote mb-0 card-body">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere
-                            erat a ante.
-                        </p>
-                        <footer className="blockquote-footer">
-                            <small className="text-muted">
-                            Someone famous in <cite title="Source Title">Source Title</cite>
-                            </small>
-                        </footer>
-                        </blockquote>
+                        </Accordion.Collapse>
                     </Card>
                     <Card>
-                        <Card.Body>
-                        <Card.Title>Card title</Card.Title>
-                        <Card.Text>
-                            This card has supporting text below as a natural lead-in to additional
-                            content.{' '}
-                        </Card.Text>
+                        <Card.Header>
+                        <Accordion.Toggle as={Button} variant="link" eventKey="1" className="Accordion-button">
+                            Where can I find my saved Replay?
+                        </Accordion.Toggle>
+                        </Card.Header>
+                        <Accordion.Collapse eventKey="1">
+                        <Card.Body className="Accordion-text">
+                            File Explorer &gt; Documents &gt; My Games &gt; Rocket League &gt; TAGame &gt; Demos
                         </Card.Body>
-                        <Card.Footer>
-                        <small className="text-muted">Last updated 3 mins ago</small>
-                        </Card.Footer>
-                    </Card>
-                    <Card bg="primary" text="white" className="text-center p-3">
-                        <blockquote className="blockquote mb-0 card-body">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere
-                            erat a ante.
-                        </p>
-                        <footer className="blockquote-footer">
-                            <small className="text-muted">
-                            Someone famous in <cite title="Source Title">Source Title</cite>
-                            </small>
-                        </footer>
-                        </blockquote>
-                    </Card>
-                    <Card className="text-center">
-                        <Card.Body>
-                        <Card.Title>Card title</Card.Title>
-                        <Card.Text>
-                            This card has supporting text below as a natural lead-in to additional
-                            content.{' '}
-                        </Card.Text>
-                        <Card.Text>
-                            <small className="text-muted">Last updated 3 mins ago</small>
-                        </Card.Text>
-                        </Card.Body>
+                        </Accordion.Collapse>
                     </Card>
                     <Card>
-                    </Card>
-                    <Card className="text-right">
-                        <blockquote className="blockquote mb-0 card-body">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere
-                            erat a ante.
-                        </p>
-                        <footer className="blockquote-footer">
-                            <small className="text-muted">
-                            Someone famous in <cite title="Source Title">Source Title</cite>
-                            </small>
-                        </footer>
-                        </blockquote>
+                        <Card.Header>
+                        <Accordion.Toggle as={Button} variant="link" eventKey="2" className="Accordion-button">
+                            Why solo duel?
+                        </Accordion.Toggle>
+                        </Card.Header>
+                        <Accordion.Collapse eventKey="2">
+                        <Card.Body>
+                            Solo Duel is arguably the most efficient way of improving your Rocket League skills <br />
+                        </Card.Body>
+                        </Accordion.Collapse>
                     </Card>
                     <Card>
-                        <Card.Body>
-                        <Card.Title>Card title</Card.Title>
-                        <Card.Text>
-                            This is a wider card with supporting text below as a natural lead-in to
-                            additional content. This card has even longer content than the first to
-                            show that equal height action.
-                        </Card.Text>
-                        <Card.Text>
-                            <small className="text-muted">Last updated 3 mins ago</small>
-                        </Card.Text>
-                        </Card.Body>
+                        <Card.Header>
+                        <Accordion.Toggle as={Button} variant="link" eventKey="3" className="Accordion-button">
+                            Who is Feed?
+                        </Accordion.Toggle>
+                        </Card.Header>
+                        <Accordion.Collapse eventKey="3">
+                        <Card.Body>Feed! is a multi-season top 100 Solo Duel player with 4000+ hours played</Card.Body>
+                        </Accordion.Collapse>
                     </Card>
-                </CardColumns>
+                    <Card>
+                        <Card.Header>
+                        <Accordion.Toggle as={Button} variant="link" eventKey="4" className="Accordion-button">
+                            How can I submit feedback?
+                        </Accordion.Toggle>
+                        </Card.Header>
+                        <Accordion.Collapse eventKey="4">
+                        <Card.Body>No content yet hold your horses</Card.Body>
+                        </Accordion.Collapse>
+                    </Card>
+                </Accordion>
 
             </Jumbotron>
         </ Scroll.Element>
