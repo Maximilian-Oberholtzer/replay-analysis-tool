@@ -16,11 +16,28 @@ function Ranks(data){
     if(data.data != null){
         playerBlueName = data.data.data.blue.players[0].name;
         playerOrangeName = data.data.data.orange.players[0].name;
-        const playerBlueId = data.data.data.blue.players[0].id.id;    
-        const playerOrangeId = data.data.data.orange.players[0].id.id;
+        var playerBluePlatform = data.data.data.blue.players[0].id.platform;
+        var playerOrangePlatform = data.data.data.orange.players[0].id.platform;
+        var playerBlueId = data.data.data.blue.players[0].id.id;    
+        var playerOrangeId = data.data.data.orange.players[0].id.id;
+
+        //check platform
+        if(playerBluePlatform.substring(0, 1) === "p"){
+            playerBluePlatform = "ps";
+        }
+        if(playerOrangePlatform.substring(0, 1) === "p"){
+            playerOrangePlatform = "ps";
+        }
+
+        if(playerBluePlatform.substring(0, 1) === "x"){
+            playerBlueId = playerBlueName;
+        }
+        if(playerOrangePlatform.substring(0, 1) === "x"){
+            playerOrangeId = playerOrangeName;
+        }
 
         //get blue player's rank
-        axios.get("/api/getranks/" + playerBlueId).then(response => {
+        axios.get("/api/getranks/" + playerBluePlatform + "+" + playerBlueId).then(response => {
             const playerBlueRankString = response.data;
             const rankIndex1 = playerBlueRankString.indexOf(rankOffset1);
             const rankIndex2 = playerBlueRankString.indexOf(rankOffset2);
@@ -29,7 +46,7 @@ function Ranks(data){
         })
 
         //get orange player's rank
-        axios.get("/api/getranks/" + playerOrangeId).then(response => {
+        axios.get("/api/getranks/" + playerOrangePlatform + "+" + playerOrangeId).then(response => {
             const playerOrangeRankString = response.data;
             const rankIndex1 = playerOrangeRankString.indexOf(rankOffset1);
             const rankIndex2 = playerOrangeRankString.indexOf(rankOffset2);
