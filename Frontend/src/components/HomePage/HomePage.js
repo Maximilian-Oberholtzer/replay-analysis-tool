@@ -155,7 +155,7 @@ class HomePage extends React.Component {
     render(){
         return(
             <div>
-                <Button className={'Return-to-top-button ' + this.state.scrollButtonClass} onClick={this.scrollToTop}>&#129045;</Button>
+                <Button className={'Return-to-top-button ' + this.state.scrollButtonClass} onClick={this.scrollToTop}>UP</Button>
                 <h1 className="Top-page-title">Feed's Replay Analysis Tool </h1>   
                 <CardDeck className="Card-deck">
                 <Card className="Card">
