@@ -112,6 +112,41 @@ import unranked from '../../resources/Unranked.png';
 
 }
 
+// function GetRankImage2(r){
+
+//     var rank;
+//     const rankDist = [
+//         {minRank: 149, rankImg: bronze1},
+//         {minRank: 207, rankImg: bronze2},
+//         {minRank: 264, rankImg: bronze3},
+//         {minRank: 323, rankImg: silver1},
+//         {minRank: 387, rankImg: silver2},
+//         {minRank: 455, rankImg: silver3},
+//         {minRank: 513, rankImg: gold1},
+//         {minRank: 567, rankImg: gold2},
+//         {minRank: 634, rankImg: gold3},
+//         {minRank: 686, rankImg: platinum1},
+//         {minRank: 746, rankImg: platinum2},
+//         {minRank: 807, rankImg: platinum3},
+//         {minRank: 866, rankImg: diamond1},
+//         {minRank: 925, rankImg: diamond2},
+//         {minRank: 987, rankImg: diamond3},
+//         {minRank: 1047, rankImg: champion1},
+//         {minRank: 1106, rankImg: champion2},
+//         {minRank: 1167, rankImg: champion3},
+//         {minRank: 1225, rankImg: grandChampion1},
+//         {minRank: 1287, rankImg: grandChampion2},
+//         {minRank: 1344, rankImg: grandChampion3},
+//     ]
+
+//     if(r != null){
+//         console.log(r);
+//         rank = parseInt(r.rank)
+//     }
+
+//     return null;
+// }
+
 function GetRankImage(r){
 
     var rankImg = unranked;

@@ -1,5 +1,9 @@
+.Core-stats-title{
+  margin-top: 2%;
+}
+
 .Card-deck-core-stats{
-    margin-top: 50px !important;
+    margin-top: 2% !important;
     margin-left: 10% !important;
     margin-right: 10% !important;
 }

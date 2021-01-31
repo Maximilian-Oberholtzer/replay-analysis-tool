@@ -51,7 +51,7 @@ function About(){
                         </Card.Header>
                         <Accordion.Collapse eventKey="2">
                         <Card.Body>
-                            Solo Duel is arguably the most efficient way of improving your Rocket League skills <br />
+                            Solo Duel is arguably the most efficient way to improve your Rocket League skills <br />
                         </Card.Body>
                         </Accordion.Collapse>
                     </Card>
