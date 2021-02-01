@@ -29,10 +29,15 @@
 }
 
 .Card-player-ranks{
-    background-color: #e9ecef !important;
+    background-color: #dadfe4 !important;
     border: 1px solid rgb(12, 12, 12) !important;
     border-radius: 1rem;
     margin-bottom: 30px !important;
     margin-right: 20px !important;
     margin-left: 20px !important;
   }
+
+.Card-player-ranks-body{
+    padding-top: 10%;
+    padding-bottom: 10%;
+}

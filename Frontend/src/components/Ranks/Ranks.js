@@ -6,6 +6,8 @@ import axios from "axios";
 import { CardDeck, Card } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import {Radar} from 'react-chartjs-2';
+
 import bronze1 from '../../resources/Bronze1.png';
 import bronze2 from '../../resources/Bronze2.png';
 import bronze3 from '../../resources/Bronze3.png';
@@ -34,6 +36,8 @@ import unranked from '../../resources/Unranked.png';
 
     const [playerBlueRank, setBlueValue] = useState(null);
     const [playerOrangeRank, setOrangeValue] = useState(null);
+    const [blueId, setBlueId] = useState(null);
+    const [orangeId, setOrangeId] = useState(null);
 
     const rankOffset1 = "(";
     const rankOffset2 = ")";
@@ -65,23 +69,33 @@ import unranked from '../../resources/Unranked.png';
         }
 
         //get blue player's rank
-        axios.get("/api/getranks/" + playerBluePlatform + "+" + playerBlueId).then(response => {
-            const playerBlueRankString = response.data;
-            const rankIndex1 = playerBlueRankString.indexOf(rankOffset1);
-            const rankIndex2 = playerBlueRankString.indexOf(rankOffset2);
-            const playerBlueValue = playerBlueRankString.substring(rankIndex1 + 1, rankIndex2);
-            setBlueValue(playerBlueValue);
-        })
+        if(playerBlueId !== blueId){
+            setBlueId(playerBlueId);
+            axios.get("/api/getranks/" + playerBluePlatform + "+" + playerBlueId).then(response => {
+                const playerBlueRankString = response.data;
+                const rankIndex1 = playerBlueRankString.indexOf(rankOffset1);
+                const rankIndex2 = playerBlueRankString.indexOf(rankOffset2);
+                const playerBlueValue = playerBlueRankString.substring(rankIndex1 + 1, rankIndex2);    
+                if(playerBlueValue !== playerBlueRank){
+                    setBlueValue(playerBlueValue);
+                }    
+            })
+        }
 
         //get orange player's rank
-        axios.get("/api/getranks/" + playerOrangePlatform + "+" + playerOrangeId).then(response => {
-            const playerOrangeRankString = response.data;
-            const rankIndex1 = playerOrangeRankString.indexOf(rankOffset1);
-            const rankIndex2 = playerOrangeRankString.indexOf(rankOffset2);
-            const playerOrangeValue = playerOrangeRankString.substring(rankIndex1 + 1, rankIndex2);
-            setOrangeValue(playerOrangeValue);
+        if(playerOrangeId !== orangeId){
+            setOrangeId(playerOrangeId);
+            axios.get("/api/getranks/" + playerOrangePlatform + "+" + playerOrangeId).then(response => {
+                const playerOrangeRankString = response.data;
+                const rankIndex1 = playerOrangeRankString.indexOf(rankOffset1);
+                const rankIndex2 = playerOrangeRankString.indexOf(rankOffset2);
+                const playerOrangeValue = playerOrangeRankString.substring(rankIndex1 + 1, rankIndex2);
 
-        })
+                if(playerOrangeValue !== playerOrangeRank){
+                    setOrangeValue(playerOrangeValue);
+                }
+            })
+        }
 
         // Player ranks card and player playstyle card
         return(
@@ -89,17 +103,20 @@ import unranked from '../../resources/Unranked.png';
                     <Card className="Card-player-ranks">
                         <Card.Body>
                         <Card.Title className="Card-player-ranks-title">Ranks</Card.Title>
-                        <h1 className="title"> {playerBlueName}: {playerBlueRank} 
-                            <GetRankImage rank={playerBlueRank} />
-                        </h1>
-                        <h1 className="title"> {playerOrangeName}: {playerOrangeRank}
-                            <GetRankImage rank={playerOrangeRank} />
-                        </h1>
+                        <div className="Card-player-ranks-body">
+                            <h1 className="title"> {playerBlueName}: {playerBlueRank} 
+                                <GetRankImage rank={playerBlueRank} />
+                            </h1>
+                            <h1 className="title"> {playerOrangeName}: {playerOrangeRank}
+                                <GetRankImage rank={playerOrangeRank} />
+                            </h1>
+                        </div> 
                         </Card.Body>
                     </Card>
                     <Card className="Card-player-ranks">
                         <Card.Body>
-                        <Card.Title className="Card-player-ranks-title">Match Playstyle</Card.Title>
+                        <Card.Title className="Card-player-ranks-title">Playstyle Comparison</Card.Title>
+                            <GetPlayStyles data={data} />
                         </Card.Body>
                     </Card>
                 </CardDeck>
@@ -110,6 +127,83 @@ import unranked from '../../resources/Unranked.png';
         return(null);
     }
 
+}
+
+function GetPlayStyles(data){
+    
+    const blueData = data.data.data.data.blue.players[0];
+    const orangeData = data.data.data.data.orange.players[0];
+    const blueName = blueData.name;
+    const orangeName = orangeData.name;
+
+    // Aerials
+    var blueHighAir = blueData.stats.movement.percent_high_air + blueData.stats.movement.percent_low_air;
+    var orangeHighAir = orangeData.stats.movement.percent_high_air + orangeData.stats.movement.percent_low_air;
+
+    const totalHighAir = blueHighAir + orangeHighAir;
+    blueHighAir = (blueHighAir / totalHighAir) * 10;
+    orangeHighAir = (orangeHighAir / totalHighAir) * 10;
+
+    // Ground Play
+    var blueGround = blueData.stats.movement.percent_ground;
+    var orangeGround = orangeData.stats.movement.percent_ground;
+
+    const totalGround = blueGround + orangeGround;
+    blueGround = (blueGround / totalGround) * 10;
+    orangeGround = (orangeGround / totalGround) * 10;
+
+    // Offensive
+    var blueOffensive = blueData.stats.positioning.percent_offensive_half;
+    var orangeOffensive = orangeData.stats.positioning.percent_offensive_half;
+
+    const totalOffensive = blueOffensive + orangeOffensive;
+    blueOffensive = (blueOffensive / totalOffensive) * 10;
+    orangeOffensive = (orangeOffensive / totalOffensive) * 10;
+    
+    // Defensive
+    var blueDefensive = blueData.stats.positioning.percent_defensive_half;
+    var orangeDefensive = orangeData.stats.positioning.percent_defensive_half;
+
+    const totalDefensive = blueDefensive + orangeDefensive;
+    blueDefensive = (blueDefensive / totalDefensive) * 10;
+    orangeDefensive = (orangeDefensive / totalDefensive) * 10;
+
+    const playStylesData = {
+        labels: ['Aerial Play', 'Ground Play', 'Offensive', 'Defensive'],
+        datasets: [
+            {
+                label: blueName,
+                data: [blueHighAir, blueGround, blueOffensive, blueDefensive],
+                borderColor: '#007eff'
+            },
+            {
+                label: orangeName,
+                data: [orangeHighAir, orangeGround, orangeOffensive, orangeDefensive],
+                borderColor: '#faa41a'
+            }
+        ]
+    };
+
+    const playStylesOptions = {
+        scale: {
+            angleLines: {
+                display: false
+            },
+            ticks: {
+                stepSize: 1,
+                display: false
+            }
+        }
+    };
+
+    return(
+        <Radar
+            data={playStylesData}
+            height={100}
+            width={200}
+            options={playStylesOptions}
+        />
+    );
 }
 
 // function GetRankImage2(r){

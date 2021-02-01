@@ -10,7 +10,7 @@ import './HomePage.css';
 import rlImage1 from '../../resources/rl-image-1.jpg';
 import rlImage2 from '../../resources/rl-image-2.jpg';
 import rlImage3 from '../../resources/rl-image-3.jpg';
-import feedImage from '../../resources/feed.png';
+//import feedImage from '../../resources/feed.png';
 
 import Ranks from '../Ranks/Ranks';
 import CoreStats from '../CoreStats/CoreStats';
