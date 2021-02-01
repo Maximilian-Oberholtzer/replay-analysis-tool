@@ -33,6 +33,7 @@ import supersonic from '../../resources/Supersonic.png';
 import unranked from '../../resources/Unranked.png';
 
     export default function Ranks(data){
+    console.log(data);
 
     const [playerBlueRank, setBlueValue] = useState(null);
     const [playerOrangeRank, setOrangeValue] = useState(null);
@@ -185,6 +186,9 @@ function GetPlayStyles(data){
     };
 
     const playStylesOptions = {
+        tooltips: {
+            enabled: false
+        },
         scale: {
             angleLines: {
                 display: false
@@ -192,7 +196,7 @@ function GetPlayStyles(data){
             ticks: {
                 stepSize: 1,
                 display: false
-            }
+            },
         }
     };
 

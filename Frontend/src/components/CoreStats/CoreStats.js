@@ -13,6 +13,15 @@ function CoreStats(data){
 
         let bluePlayerName = bluePlayerData.name.toString();
         let orangePlayerName = orangePlayerData.name.toString();
+
+        //truncate if needed
+        console.log(bluePlayerName.length);
+        if(bluePlayerName.length >= 14){
+            bluePlayerName = bluePlayerName.substring(0, 14) + "...";
+        }
+        if(orangePlayerName.length >= 14){
+            orangePlayerName = orangePlayerName.substring(0, 14) + "...";
+        }
         
         let blueGoals = bluePlayerData.stats.core.goals;
         let orangeGoals = orangePlayerData.stats.core.goals;
@@ -147,7 +156,6 @@ function CoreStats(data){
                         </Card.Body>
                     </Card>
                 </CardDeck>
-                <hr className="Footer-hr"/>
             </div>
 
         )
