@@ -1,48 +1,31 @@
-.Card-deck-player-ranks{
+.Card-deck-positioning-stats{
     margin-top: 2% !important;
     margin-left: 20% !important;
     margin-right: 20% !important;
 }
 
 @media (min-width: 576px){
-    .Card-deck-player-ranks {
+    .Card-deck-positioning-stats {
       display: block !important;
       flex-flow: unset !important;
     }
 }
   
 @media (min-width: 1200px){
-    .Card-deck-player-ranks {
+    .Card-deck-positioning-stats {
       display: flex !important;
       flex-flow: row wrap !important;
     }
 }
 
-.Card-player-ranks-title{
-    margin-bottom: 1.75rem !important; 
-}
-
-.Rank-img{
-    height: 60px;
-    margin-bottom: 12px;
-    margin-left: 24px;
-    filter: drop-shadow(2px 4px 10px black);
-}
-
-.Card-player-ranks{
-    background-color: white !important;
+.Card-positioning-stats{
     border: 1px solid #d1d3d4 !important;
     border-radius: 1rem;
     margin-bottom: 30px !important;
     margin-right: 20px !important;
     margin-left: 20px !important;
-  }
-
-.Card-player-ranks-body{
-    padding-top: 10%;
-    padding-bottom: 10%;
 }
 
-.Card-player-ranks-text{
-    font-size: 2vw;
+.Card-positioning-title{
+    margin-bottom: 1.75rem !important; 
 }

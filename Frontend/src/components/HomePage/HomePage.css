@@ -149,6 +149,7 @@ Button{
     border: 1px solid rgb(20,20,20) !important;
     background-color: rgb(20,20,20) !important;
     padding: .05rem .40rem !important;
+    font-size: 10px;
 }
 
 .Copy-button:hover{

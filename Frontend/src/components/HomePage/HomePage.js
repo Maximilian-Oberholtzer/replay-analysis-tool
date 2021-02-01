@@ -14,6 +14,7 @@ import rlImage3 from '../../resources/rl-image-3.jpg';
 
 import Ranks from '../Ranks/Ranks';
 import CoreStats from '../CoreStats/CoreStats';
+import PositioningStats from '../PositioningStats/PositioningStats';
 import About from '../About/About'
 
 
@@ -207,6 +208,7 @@ class HomePage extends React.Component {
                     <GetReplayTitle data={this.state.replayData} />
                     <Ranks data={this.state.replayData} />
                     <CoreStats data={this.state.replayData} />
+                    <PositioningStats data={this.state.replayData} />
                 </Scroll.Element>
             </div>  
         );
@@ -218,7 +220,7 @@ function GetCopyToClipboardButton(data){
     if(data.data != null){
         return(
             <CopyToClipboard text={data.data}>
-                <Button className="Copy-button">&#x029C9;</Button>
+                <Button className="Copy-button">Copy</Button>
             </CopyToClipboard>
         )
     }
