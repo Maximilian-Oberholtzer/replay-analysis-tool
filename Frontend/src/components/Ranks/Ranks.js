@@ -104,10 +104,10 @@ import unranked from '../../resources/Unranked.png';
                         <Card.Body>
                         <Card.Title className="Card-player-ranks-title">Ranks</Card.Title>
                         <div className="Card-player-ranks-body">
-                            <h1 className="title"> {playerBlueName}: {playerBlueRank} 
+                            <h1 className="Card-player-ranks-text"> {playerBlueName}: {playerBlueRank} 
                                 <GetRankImage rank={playerBlueRank} />
                             </h1>
-                            <h1 className="title"> {playerOrangeName}: {playerOrangeRank}
+                            <h1 className="Card-player-ranks-text"> {playerOrangeName}: {playerOrangeRank}
                                 <GetRankImage rank={playerOrangeRank} />
                             </h1>
                         </div> 
