@@ -70,7 +70,7 @@ class HomePage extends React.Component {
     // Scroll to about section automatically
     aboutClick = () => {
         Scroll.scroller.scrollTo('About', {
-            duration: 1200,
+            duration: 1000,
             smooth: true
         });
     }
@@ -137,7 +137,7 @@ class HomePage extends React.Component {
                         this.setState({replayData: response});
 
                         Scroll.scroller.scrollTo('Analysis', {
-                            duration: 2000,
+                            duration: 1600,
                             delay: 200,
                             offset: -84,
                             smooth: true

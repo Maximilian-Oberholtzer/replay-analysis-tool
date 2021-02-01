@@ -2,7 +2,7 @@ import '../../App.css';
 import './PositioningStats.css';
 import { CardDeck, Card } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Radar, Doughnut} from 'react-chartjs-2';
+import {Radar, Bar} from 'react-chartjs-2';
 
 function PositioningStats(data) {
 
@@ -38,7 +38,7 @@ function PositioningStats(data) {
         orangeSpeed = (orangeSpeed / totalSpeed) * 10;
 
         const positioningData = {
-            labels: ['Ball Chasing', 'Boost Hungry', 'Speed'],
+            labels: ['Close to ball', 'Boost Collected', 'Average Speed'],
             datasets: [
                 {
                     label: bluePlayerName,
@@ -68,7 +68,48 @@ function PositioningStats(data) {
             }
         };
 
+        // Doughnut Chart for Boost data
+        let blueBoost1 = bluePlayerData.stats.boost.percent_boost_0_25;
+        let blueBoost2 = bluePlayerData.stats.boost.percent_boost_25_50;
+        let blueBoost3 = bluePlayerData.stats.boost.percent_boost_50_75;
+        let blueBoost4 = bluePlayerData.stats.boost.percent_boost_75_100;
 
+        let orangeBoost1 = orangePlayerData.stats.boost.percent_boost_0_25;
+        let orangeBoost2 = orangePlayerData.stats.boost.percent_boost_25_50;
+        let orangeBoost3 = orangePlayerData.stats.boost.percent_boost_50_75;
+        let orangeBoost4 = orangePlayerData.stats.boost.percent_boost_75_100;
+
+        const boostData = {
+            labels: ['Time Spent Below 25%', 'Time Spent Above 75%'],
+            datasets : [
+                {
+                    label: bluePlayerName,
+                    data: [blueBoost1, blueBoost4],
+                    backgroundColor: ['#1b8bff', '#0071e7'],
+                    borderColor: ['rgb(10, 10, 10)', 'rgb(10, 10, 10)'],
+                    borderWidth: 3
+                },
+                {
+                    label: orangePlayerName,
+                    data: [orangeBoost1, orangeBoost4],
+                    backgroundColor: ['#fbae33', '#f59905'],
+                    borderColor: ['rgb(10, 10, 10)', 'rgb(10, 10, 10)'],
+                    borderWidth: 3
+                }
+            ]
+        }
+
+        const boostOptions = {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true,
+                        suggestedMax: 60,
+                        stepSize: 20
+                    }
+                }]
+            }
+        }
 
         return(
             <div>
@@ -88,7 +129,12 @@ function PositioningStats(data) {
                     <Card className="Card-positioning-stats">
                         <Card.Body>
                         <Card.Title>Boost Comparison</Card.Title>
-
+                            <Bar
+                                data={boostData}
+                                height={100}
+                                width={200}
+                                options={boostOptions}
+                            />
                         </Card.Body>
                     </Card>
                 </CardDeck>
