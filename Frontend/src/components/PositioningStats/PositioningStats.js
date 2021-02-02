@@ -68,7 +68,7 @@ function PositioningStats(data) {
             }
         };
 
-        // Doughnut Chart for Boost data
+        // Bar Chart for Boost data
         let blueBoost1 = bluePlayerData.stats.boost.percent_boost_0_25;
         let blueBoost2 = bluePlayerData.stats.boost.percent_boost_25_50;
         let blueBoost3 = bluePlayerData.stats.boost.percent_boost_50_75;
