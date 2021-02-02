@@ -80,7 +80,7 @@ function PositioningStats(data) {
         let orangeBoost4 = orangePlayerData.stats.boost.percent_boost_75_100;
 
         const boostData = {
-            labels: ['Time Spent Below 25%', 'Time Spent Above 75%'],
+            labels: ['% Time Spent Below 25', '% Time Spent Above 75'],
             datasets : [
                 {
                     label: bluePlayerName,
