@@ -7,7 +7,6 @@ import {Bar} from 'react-chartjs-2';
 function CoreStats(data){
 
     if(data.data !== null){
-        //console.log(data);
         let bluePlayerData = data.data.data.blue.players[0];
         let orangePlayerData = data.data.data.orange.players[0];
 
@@ -15,7 +14,6 @@ function CoreStats(data){
         let orangePlayerName = orangePlayerData.name.toString();
 
         //truncate if needed
-        console.log(bluePlayerName.length);
         if(bluePlayerName.length >= 14){
             bluePlayerName = bluePlayerName.substring(0, 14) + "...";
         }
