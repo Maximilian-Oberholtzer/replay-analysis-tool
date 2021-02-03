@@ -20,49 +20,52 @@ function PositioningStats(data) {
         var orangeDistance = orangePlayerData.stats.positioning.avg_distance_to_ball;
         let totalDistance = blueDistance + orangeDistance;
 
-        blueDistance = (blueDistance / totalDistance) * 10;
-        orangeDistance = (orangeDistance / totalDistance) * 10;
+        blueDistance = (blueDistance / totalDistance) * 100;
+        orangeDistance = (orangeDistance / totalDistance) * 100;
 
         var blueBoost = bluePlayerData.stats.boost.amount_collected;
         var orangeBoost = orangePlayerData.stats.boost.amount_collected;
         let totalBoost = blueBoost + orangeBoost;
 
-        blueBoost = (blueBoost / totalBoost) * 10;
-        orangeBoost = (orangeBoost / totalBoost) * 10;
+        blueBoost = (blueBoost / totalBoost) * 100;
+        orangeBoost = (orangeBoost / totalBoost) * 100;
 
         var blueSpeed = bluePlayerData.stats.movement.avg_speed;
         var orangeSpeed = orangePlayerData.stats.movement.avg_speed;
         let totalSpeed = blueSpeed + orangeSpeed;
 
-        blueSpeed = (blueSpeed / totalSpeed) * 10;
-        orangeSpeed = (orangeSpeed / totalSpeed) * 10;
+        blueSpeed = (blueSpeed / totalSpeed) * 100;
+        orangeSpeed = (orangeSpeed / totalSpeed) * 100;
 
         const positioningData = {
-            labels: ['Close to ball', 'Boost Collected', 'Average Speed'],
+            labels: ['Closer to ball', 'Boost Collected', 'Average Speed'],
             datasets: [
                 {
                     label: bluePlayerName,
-                    data: [blueDistance, blueBoost, blueSpeed],
+                    data: [orangeDistance.toFixed(2), blueBoost.toFixed(2), blueSpeed.toFixed(2)],
                     borderColor: '#007eff'
                 },
                 {
                     label: orangePlayerName,
-                    data: [orangeDistance, orangeBoost, orangeSpeed],
+                    data: [blueDistance.toFixed(2), orangeBoost.toFixed(2), orangeSpeed.toFixed(2)],
                     borderColor: '#faa41a'
                 }
             ]
         };
     
         const positioningOptions = {
+            legend : {
+                display: false
+            },
             tooltips: {
-                enabled: false
+                enabled: true
             },
             scale: {
                 angleLines: {
                     display: false
                 },
                 ticks: {
-                    stepSize: 1,
+                    stepSize: 10,
                     display: false
                 },
             }
@@ -70,28 +73,24 @@ function PositioningStats(data) {
 
         // Bar Chart for Boost data
         let blueBoost1 = bluePlayerData.stats.boost.percent_boost_0_25;
-        let blueBoost2 = bluePlayerData.stats.boost.percent_boost_25_50;
-        let blueBoost3 = bluePlayerData.stats.boost.percent_boost_50_75;
-        let blueBoost4 = bluePlayerData.stats.boost.percent_boost_75_100;
+        let blueBoost2 = bluePlayerData.stats.boost.percent_boost_75_100;
 
         let orangeBoost1 = orangePlayerData.stats.boost.percent_boost_0_25;
-        let orangeBoost2 = orangePlayerData.stats.boost.percent_boost_25_50;
-        let orangeBoost3 = orangePlayerData.stats.boost.percent_boost_50_75;
-        let orangeBoost4 = orangePlayerData.stats.boost.percent_boost_75_100;
+        let orangeBoost2 = orangePlayerData.stats.boost.percent_boost_75_100;
 
         const boostData = {
             labels: ['% Time Spent Below 25', '% Time Spent Above 75'],
             datasets : [
                 {
                     label: bluePlayerName,
-                    data: [blueBoost1, blueBoost4],
+                    data: [blueBoost1.toFixed(2), blueBoost2.toFixed(2)],
                     backgroundColor: ['#1b8bff', '#0071e7'],
                     borderColor: ['rgb(10, 10, 10)', 'rgb(10, 10, 10)'],
                     borderWidth: 3
                 },
                 {
                     label: orangePlayerName,
-                    data: [orangeBoost1, orangeBoost4],
+                    data: [orangeBoost1.toFixed(2), orangeBoost2.toFixed(2)],
                     backgroundColor: ['#fbae33', '#f59905'],
                     borderColor: ['rgb(10, 10, 10)', 'rgb(10, 10, 10)'],
                     borderWidth: 3
@@ -100,6 +99,9 @@ function PositioningStats(data) {
         }
 
         const boostOptions = {
+            legend : {
+                display: false
+            },
             scales: {
                 yAxes: [{
                     ticks: {

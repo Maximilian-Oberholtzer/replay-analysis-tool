@@ -1,0 +1,28 @@
+.Analysis-title{
+    margin-top: 2%;
+}
+
+.Card-analysis{
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 2%;
+    border: none;
+}
+
+.Analysis-button{
+    margin-left: 8px;
+    font-size: 12px;
+    border-radius: 50%;
+    border: 1px solid rgb(20,20,20) !important;
+    background-color: rgb(20,20,20) !important;
+    
+}
+
+.Analysis-button:hover{
+    color: rgb(20,20,20) !important;
+    background-color: white !important;
+}
+
+button:focus{
+    outline: none !important;
+}

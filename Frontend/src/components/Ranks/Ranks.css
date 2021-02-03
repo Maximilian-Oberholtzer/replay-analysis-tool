@@ -43,6 +43,12 @@
     padding-bottom: 10%;
 }
 
-.Card-player-ranks-text{
+.Card-player-ranks-text-blue{
     font-size: 2vw;
+    color: #007eff !important;
+}
+
+.Card-player-ranks-text-orange{
+    font-size: 2vw;
+    color: #faa41a !important;
 }
