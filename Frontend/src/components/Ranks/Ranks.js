@@ -33,7 +33,6 @@ import supersonic from '../../resources/Supersonic.png';
 import unranked from '../../resources/Unranked.png';
 
     export default function Ranks(data){
-    console.log(data);
 
     const [playerBlueRank, setBlueValue] = useState(null);
     const [playerOrangeRank, setOrangeValue] = useState(null);
@@ -105,10 +104,10 @@ import unranked from '../../resources/Unranked.png';
                         <Card.Body>
                         <Card.Title className="Card-player-ranks-title">Ranks</Card.Title>
                         <div className="Card-player-ranks-body">
-                            <h1 className="Card-player-ranks-text"> {playerBlueName}: {playerBlueRank} 
+                            <h1 className="Card-player-ranks-text-blue"> {playerBlueName}: {playerBlueRank} 
                                 <GetRankImage rank={playerBlueRank} />
                             </h1>
-                            <h1 className="Card-player-ranks-text"> {playerOrangeName}: {playerOrangeRank}
+                            <h1 className="Card-player-ranks-text-orange"> {playerOrangeName}: {playerOrangeRank}
                                 <GetRankImage rank={playerOrangeRank} />
                             </h1>
                         </div> 
@@ -142,59 +141,62 @@ function GetPlayStyles(data){
     var orangeHighAir = orangeData.stats.movement.percent_high_air + orangeData.stats.movement.percent_low_air;
 
     const totalHighAir = blueHighAir + orangeHighAir;
-    blueHighAir = (blueHighAir / totalHighAir) * 10;
-    orangeHighAir = (orangeHighAir / totalHighAir) * 10;
+    blueHighAir = (blueHighAir / totalHighAir) * 100;
+    orangeHighAir = (orangeHighAir / totalHighAir) * 100;
 
     // Ground Play
     var blueGround = blueData.stats.movement.percent_ground;
     var orangeGround = orangeData.stats.movement.percent_ground;
 
     const totalGround = blueGround + orangeGround;
-    blueGround = (blueGround / totalGround) * 10;
-    orangeGround = (orangeGround / totalGround) * 10;
+    blueGround = (blueGround / totalGround) * 100;
+    orangeGround = (orangeGround / totalGround) * 100;
 
     // Offensive
     var blueOffensive = blueData.stats.positioning.percent_offensive_half;
     var orangeOffensive = orangeData.stats.positioning.percent_offensive_half;
 
     const totalOffensive = blueOffensive + orangeOffensive;
-    blueOffensive = (blueOffensive / totalOffensive) * 10;
-    orangeOffensive = (orangeOffensive / totalOffensive) * 10;
+    blueOffensive = (blueOffensive / totalOffensive) * 100;
+    orangeOffensive = (orangeOffensive / totalOffensive) * 100;
     
     // Defensive
     var blueDefensive = blueData.stats.positioning.percent_defensive_half;
     var orangeDefensive = orangeData.stats.positioning.percent_defensive_half;
 
     const totalDefensive = blueDefensive + orangeDefensive;
-    blueDefensive = (blueDefensive / totalDefensive) * 10;
-    orangeDefensive = (orangeDefensive / totalDefensive) * 10;
+    blueDefensive = (blueDefensive / totalDefensive) * 100;
+    orangeDefensive = (orangeDefensive / totalDefensive) * 100;
 
     const playStylesData = {
         labels: ['Aerial Play', 'Ground Play', 'Offensive', 'Defensive'],
         datasets: [
             {
                 label: blueName,
-                data: [blueHighAir, blueGround, blueOffensive, blueDefensive],
+                data: [blueHighAir.toFixed(2), blueGround.toFixed(2), blueOffensive.toFixed(2), blueDefensive.toFixed(2)],
                 borderColor: '#007eff'
             },
             {
                 label: orangeName,
-                data: [orangeHighAir, orangeGround, orangeOffensive, orangeDefensive],
+                data: [orangeHighAir.toFixed(2), orangeGround.toFixed(2), orangeOffensive.toFixed(2), orangeDefensive.toFixed(2)],
                 borderColor: '#faa41a'
             }
         ]
     };
 
     const playStylesOptions = {
+        legend : {
+            display: false
+        },
         tooltips: {
-            enabled: false
+            enabled: true
         },
         scale: {
             angleLines: {
                 display: false
             },
             ticks: {
-                stepSize: 1,
+                stepSize: 10,
                 display: false
             },
         }

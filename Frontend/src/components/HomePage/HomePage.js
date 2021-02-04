@@ -15,6 +15,7 @@ import rlImage3 from '../../resources/rl-image-3.jpg';
 import Ranks from '../Ranks/Ranks';
 import CoreStats from '../CoreStats/CoreStats';
 import PositioningStats from '../PositioningStats/PositioningStats';
+import Analysis from '../Analysis/Analysis';
 import About from '../About/About'
 
 
@@ -139,7 +140,7 @@ class HomePage extends React.Component {
                         Scroll.scroller.scrollTo('Analysis', {
                             duration: 1600,
                             delay: 200,
-                            offset: -84,
+                            offset: -60,
                             smooth: true
                         });
                     }
@@ -207,8 +208,9 @@ class HomePage extends React.Component {
                 <Scroll.Element name="Analysis">
                     <GetReplayTitle data={this.state.replayData} />
                     <Ranks data={this.state.replayData} />
+                    <Analysis data={this.state.replayData} />
                     <CoreStats data={this.state.replayData} />
-                    <PositioningStats data={this.state.replayData} />
+                    <PositioningStats data={this.state.replayData} />         
                 </Scroll.Element>
             </div>  
         );
