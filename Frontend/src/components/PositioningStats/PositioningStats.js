@@ -79,7 +79,7 @@ function PositioningStats(data) {
         let orangeBoost2 = orangePlayerData.stats.boost.percent_boost_75_100;
 
         const boostData = {
-            labels: ['% Time Spent Below 25', '% Time Spent Above 75'],
+            labels: ['Time Spent Below 25', 'Time Spent Above 75'],
             datasets : [
                 {
                     label: bluePlayerName,
@@ -115,7 +115,7 @@ function PositioningStats(data) {
 
         return(
             <div>
-                <h1 className="Core-stats-title">Positioning & Boost Stats</h1>
+                <h1 className="Positioning-stats-title">Positioning & Boost Stats</h1>
                 <CardDeck className="Card-deck-positioning-stats">
                     <Card className="Card-positioning-stats">
                         <Card.Body>

@@ -34,52 +34,38 @@ function Analysis(data) {
         let loserName = losingPlayer.name;
 
         // Amount of time in air
-        let winnerAir = winningPlayer.stats.movement.percent_high_air + winningPlayer.stats.movement.percent_low_air;
-        let loserAir = losingPlayer.stats.movement.percent_high_air + losingPlayer.stats.movement.percent_low_air;
-        console.log("winner Air: " + winnerAir);
-        console.log("loser Air: " + loserAir);
+        //let winnerAir = winningPlayer.stats.movement.percent_high_air + winningPlayer.stats.movement.percent_low_air;
+        //let loserAir = losingPlayer.stats.movement.percent_high_air + losingPlayer.stats.movement.percent_low_air;
 
         // Amount of time on ground
-        let winnerGround = winningPlayer.stats.movement.percent_ground;
-        let loserGround = losingPlayer.stats.movement.percent_ground;
-        console.log("winner Ground: " + winnerGround);
-        console.log("loser Ground: " + loserGround);
+        //let winnerGround = winningPlayer.stats.movement.percent_ground;
+        //let loserGround = losingPlayer.stats.movement.percent_ground;
 
         // Amount of time in offensive half
         let winnerOffensive = winningPlayer.stats.positioning.percent_offensive_half;
         let loserOffensive = losingPlayer.stats.positioning.percent_offensive_half;
-        console.log("winner Offense: " + winnerOffensive);
-        console.log("loser Offense: " + loserOffensive);
 
         // Amount of time spent in defensive half
-        let winnerDefensive = winningPlayer.stats.positioning.percent_defensive_half;
-        let loserDefensive = losingPlayer.stats.positioning.percent_defensive_half;
-        console.log("winner Defensive: " + winnerDefensive);
-        console.log("loser Defensive: " + loserDefensive);
+        //let winnerDefensive = winningPlayer.stats.positioning.percent_defensive_half;
+        //let loserDefensive = losingPlayer.stats.positioning.percent_defensive_half;
 
         // Distance to the ball
         let winnerDistance = winningPlayer.stats.positioning.avg_distance_to_ball;
         let loserDistance = losingPlayer.stats.positioning.avg_distance_to_ball;
-        console.log("winner Distance to ball: " + winnerDistance);
-        console.log("loser Distance to ball: " + loserDistance);
 
         // Amount boost collected
         let winnerBoost = winningPlayer.stats.boost.amount_collected;
         let loserBoost = losingPlayer.stats.boost.amount_collected;
-        console.log("winner Boost Collected: " + winnerBoost);
-        console.log("loser Boost Collected: " + loserBoost);
 
         // Speed
-        let winnerSpeed = winningPlayer.stats.movement.avg_speed;
-        let loserSpeed = losingPlayer.stats.movement.avg_speed;
-        console.log("winner avg speed: " + winnerSpeed);
-        console.log("loser avg speed: " + loserSpeed);
+        //let winnerSpeed = winningPlayer.stats.movement.avg_speed;
+        //let loserSpeed = losingPlayer.stats.movement.avg_speed;
 
         // Shot percentage
-        let winnerShotTotal = winningPlayer.stats.core.shots;
-        let loserShotTotal = losingPlayer.stats.core.shots;
-        let winnerShotPercentage = winningPlayer.stats.core.shooting_percentage;
-        let loserShotPercentage = losingPlayer.stats.core.shooting_percentage;
+        //let winnerShotTotal = winningPlayer.stats.core.shots;
+        //let loserShotTotal = losingPlayer.stats.core.shots;
+        //let winnerShotPercentage = winningPlayer.stats.core.shooting_percentage;
+        //let loserShotPercentage = losingPlayer.stats.core.shooting_percentage;
 
 
         // Build out the analysis summary
@@ -105,15 +91,6 @@ function Analysis(data) {
                 //winning player collected less boost
                 winnerAttributes += "D";
             }
-            // if(winnerSpeed > losingPlayer){
-            //     //winning player played faster
-            //     winnerAttributes += "E";
-            // }
-            // else{
-            //     //winning player played slower
-            //     winnerAttributes += "F";
-            // }
-
         }
         else{
             //winning player was on defense more
@@ -135,17 +112,7 @@ function Analysis(data) {
                 //winning player collected less boost
                 winnerAttributes += "D";
             }
-            // if(winnerSpeed > losingPlayer){
-            //     //winning player played faster
-            //     winnerAttributes += "K";
-            // }
-            // else{
-            //     //winning player played slower
-            //     winnerAttributes += "L";
-            // }
         }
-
-        console.log(winnerAttributes);
 
         //check # of shots and shot percentages
 
@@ -154,26 +121,31 @@ function Analysis(data) {
         // Make Statement based on attributes
         if(winnerAttributes === "1AC"){
             predictedSummary = winnerName + " won the game with solid offensive pressure and boost control. " + 
-                                loserName + " likely had several unfavorable challenges while playing tight defense and could not generate enough scoring opportunities." 
+                                loserName + " likely made several unfavorable challenges while playing tight defense and could not generate enough scoring opportunities." 
         }
         if(winnerAttributes === "1AD"){
             predictedSummary = winnerName + " won the game with solid offensive pressure and shot accuracy. " + 
                                 loserName + " was likely in control for most of the game but was unsuccessful with defensive challenges and missed several scoring opportunities." 
         }
         if(winnerAttributes === "1BC"){
-
+            predictedSummary = winnerName + " won the game with solid offensive pressure, ball control and boost control. " + 
+                                loserName + " was likely unsuccessful maintaining ball possession, was overwhelmed with threatening shots and could not generate enough scoring opportunities." 
         }
         if(winnerAttributes === "1BD"){
-
+            predictedSummary = winnerName + " won the game with solid offensive pressure and ball control. " + 
+                                loserName + " likely had boost over ball decision making which gave the opponent too much space to generate scoring opportunities."; 
         }
         if(winnerAttributes === "2AC"){
-
+            predictedSummary = winnerName + " won the game with strong counterattacks and boost control. " + 
+                                loserName + " likely missed several scoring opportunities despite having more ball control.";
         }
         if(winnerAttributes === "2AD"){
-
+            predictedSummary = winnerName + " won the game with strong counterattacks and decision making. " + 
+                                    loserName + " was likely in control for most of the game but missed several scoring opportunities despite having boost and ball control.";
         }
         if(winnerAttributes === "2BC"){
-
+            predictedSummary = winnerName + " won the game with strong counterattacks and ball control. " + 
+                                loserName + " likely struggled with maintaining offensive possession and was overwhelmed by the opponent's tight defense."; 
         }
         if(winnerAttributes === "2BD"){
             predictedSummary = winnerName + " won the game with strong counterattacks and tight defensive play. " + 
@@ -189,7 +161,7 @@ function Analysis(data) {
                         Analysis
                         <OverlayTrigger
                             placement="right"
-                            delay={{ show: 250, hide: 400 }}
+                            delay={{ show: 100, hide: 400 }}
                             overlay={<Tooltip id="button-tooltip">
                                         Based on available data
                                      </Tooltip>}

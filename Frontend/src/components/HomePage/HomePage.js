@@ -140,7 +140,7 @@ class HomePage extends React.Component {
                         Scroll.scroller.scrollTo('Analysis', {
                             duration: 1600,
                             delay: 200,
-                            offset: -84,
+                            offset: -60,
                             smooth: true
                         });
                     }
