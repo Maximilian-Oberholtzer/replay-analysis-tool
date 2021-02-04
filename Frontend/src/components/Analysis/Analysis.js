@@ -7,7 +7,7 @@ function Analysis(data) {
 
     if(data.data !== null){
 
-        console.log(data);
+        //console.log(data);
 
         let blueData = data.data.data.blue.players[0];
         let orangeData = data.data.data.orange.players[0];
