@@ -37,3 +37,38 @@
     line-height: 36px;
     white-space: break-spaces;
 }
+
+.Feedback-form{
+    margin: 0 auto;
+    width: 80%;
+}
+
+.Feedback-input{
+    border: 1px solid black;
+    border-radius: 8px !important;
+}
+
+@media (max-width: 700px){
+    .Feedback-message{
+        min-width: 65vw !important;
+    }
+
+    .Feedback-name{
+        min-width: 65vw !important;
+    }
+
+}
+
+.Submit-button{
+     width: 150px !important;
+     color: white !important;
+     background-color: rgb(20,20,20) !important;
+     border: 1px solid rgb(20,20,20) !important;
+     transition: 0.3s !important;
+     font-weight: 600 !important;
+}
+
+.Submit-button:hover{
+    background-color: white !important;
+    color: rgb(20,20,20) !important;
+}

@@ -1,5 +1,7 @@
 const { response } = require('express');
 const express = require('express');
+const bodyParser = require('body-parser');
+const nodemailer = require('nodemailer');
 var unirest = require("unirest");
 var request = require("request");
 const path = require('path');
@@ -9,6 +11,8 @@ var FormData = require('form-data');
 var fs = require('fs');
 
 const app = express();
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
 
 // token for ballchasing auth
 const token = 'YYnAMB7jvHL6t5DnY7VkWrj7wuriCnff5UBTbUeK';
@@ -22,6 +26,39 @@ if(process.env.NODE_ENV === 'production'){
 }
 
 // Put all API endpoints under '/api'
+
+app.post('/api/sendfeedback', (req, res) => {
+
+  let data = req.body;
+  let smtpTransport = nodemailer.createTransport({
+    service: 'Gmail',
+    port: 465,
+    auth: {
+      user: 'feedsreplayanalysistool@gmail.com',
+      pass: 'F33d!RocketLeague'
+    }
+  })
+
+  let mailOptions = {
+    from: 'feedsreplayanalysistool@gmail.com',
+    to: 'feedsreplayanalysistool@gmail.com',
+    subject: `Feedback from: ${data.name}`,
+    html: `${data.message}`
+
+  }
+
+  smtpTransport.sendMail(mailOptions, (error, response) =>{
+    if(error){
+      res.send(error)
+    }
+    else{
+      res.send('Success')
+    }
+  })
+
+  smtpTransport.close();
+
+})
 
 //Get Replay Data API
 app.get('/api/getreplay/:replayid', (req, res) => {
