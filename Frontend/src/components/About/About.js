@@ -1,16 +1,57 @@
-import { Jumbotron, Card, Accordion, Button } from 'react-bootstrap';
+import { Jumbotron, Card, Accordion, Button, Form, Col} from 'react-bootstrap';
 import * as Scroll from 'react-scroll';
+import axios from "axios";
 
 import '../../App.css';
 import './About.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {useState} from 'react';
 
 
 function About(){
 
+    const [name, setName] = useState("");
+    const [message, setMessage] = useState("");
+    const [feedbackResponse, setFeedbackResponse] = useState("");
+
     const openBallchasingLink = (event) => {
         event.preventDefault(); 
         window.open('https://ballchasing.com', '_blank');   
+    }
+
+    const changeName = (event) => {
+        setName(event.target.value);
+        setFeedbackResponse("");
+    }
+
+    const changeMessage = (event) => {
+        setFeedbackResponse("");
+        setMessage(event.target.value);
+    }
+
+    const sendFeedback = () => {
+        const feedbackData = {
+            name,
+            message
+        };
+
+        if(name !== "" && message !== ""){
+            axios.post("api/sendfeedback", feedbackData).then(response => {
+                setName("");
+                setMessage("");
+                document.getElementById('name').value = "";
+                document.getElementById('message').value = "";
+                if(response.request.status === 200){
+                    setFeedbackResponse("Feedback sent!");
+                }
+                else{
+                    setFeedbackResponse("Error! Please Try Again.");
+                }
+            })
+        }
+        else{
+            setFeedbackResponse("Name or message cannot be empty.");
+        }
     }
 
     return(
@@ -72,16 +113,31 @@ function About(){
                         </Accordion.Toggle>
                         </Card.Header>
                         <Accordion.Collapse eventKey="4">
-                        <Card.Body>No content yet hold your horses</Card.Body>
+                        <Card.Body>
+                            <Form className="Feedback-form">
+                                <Form.Row className="align-items-center">
+                                    <Col xs={4} className="Feedback-name">
+                                        <Form.Control className="mb-2 Feedback-input" placeholder="Name" onChange={changeName}  id="name"/>
+                                    </Col>
+                                    <Col xs={8} className="Feedback-message">
+                                        <Form.Control className="mb-2 Feedback-input" placeholder="Feedback" onChange={changeMessage} id="message"/>
+                                    </Col>
+                                </Form.Row>
+                                <Button className="mb-2 Submit-button" onClick={sendFeedback}>
+                                    Submit
+                                </Button>
+                            </Form>
+                            <small className="text-muted">
+                                {feedbackResponse}
+                            </small>
+                        </Card.Body>
                         </Accordion.Collapse>
                     </Card>
                 </Accordion>
-
             </Jumbotron>
         </ Scroll.Element>
     );
 
 }
-
 
 export default About;

@@ -7,8 +7,6 @@ function Analysis(data) {
 
     if(data.data !== null){
 
-        //console.log(data);
-
         let blueData = data.data.data.blue.players[0];
         let orangeData = data.data.data.orange.players[0];
 
@@ -33,21 +31,9 @@ function Analysis(data) {
         let winnerName = winningPlayer.name;
         let loserName = losingPlayer.name;
 
-        // Amount of time in air
-        //let winnerAir = winningPlayer.stats.movement.percent_high_air + winningPlayer.stats.movement.percent_low_air;
-        //let loserAir = losingPlayer.stats.movement.percent_high_air + losingPlayer.stats.movement.percent_low_air;
-
-        // Amount of time on ground
-        //let winnerGround = winningPlayer.stats.movement.percent_ground;
-        //let loserGround = losingPlayer.stats.movement.percent_ground;
-
         // Amount of time in offensive half
         let winnerOffensive = winningPlayer.stats.positioning.percent_offensive_half;
         let loserOffensive = losingPlayer.stats.positioning.percent_offensive_half;
-
-        // Amount of time spent in defensive half
-        //let winnerDefensive = winningPlayer.stats.positioning.percent_defensive_half;
-        //let loserDefensive = losingPlayer.stats.positioning.percent_defensive_half;
 
         // Distance to the ball
         let winnerDistance = winningPlayer.stats.positioning.avg_distance_to_ball;
@@ -56,17 +42,6 @@ function Analysis(data) {
         // Amount boost collected
         let winnerBoost = winningPlayer.stats.boost.amount_collected;
         let loserBoost = losingPlayer.stats.boost.amount_collected;
-
-        // Speed
-        //let winnerSpeed = winningPlayer.stats.movement.avg_speed;
-        //let loserSpeed = losingPlayer.stats.movement.avg_speed;
-
-        // Shot percentage
-        //let winnerShotTotal = winningPlayer.stats.core.shots;
-        //let loserShotTotal = losingPlayer.stats.core.shots;
-        //let winnerShotPercentage = winningPlayer.stats.core.shooting_percentage;
-        //let loserShotPercentage = losingPlayer.stats.core.shooting_percentage;
-
 
         // Build out the analysis summary
         var winnerAttributes = "";
@@ -178,11 +153,10 @@ function Analysis(data) {
         else{
             return null;
         }
-
-
     }
-
-    return null;
+    else{
+        return null;
+    } 
 }
 
 export default Analysis;
